@@ -110,7 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\AvatarController.cs" />
+    <Compile Include="Controllers\PersonagenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -124,7 +124,7 @@
     <Compile Include="Models\Perguntas.cs" />
     <Compile Include="Models\DataContexts\PerosnagensDBContext.cs" />
     <Compile Include="Models\Personagen.cs" />
-    <Compile Include="Models\UtilizadorDBContext.cs" />
+    <Compile Include="Models\DataContexts\UtilizadorDBContext.cs" />
     <Compile Include="Models\Utilizador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,6 +139,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\_ListEtapas.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Personagen\MostraTutor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
