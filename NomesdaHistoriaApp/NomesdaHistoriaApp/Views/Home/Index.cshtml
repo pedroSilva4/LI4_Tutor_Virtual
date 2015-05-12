@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Nomes da História - tutor virtual";
+}
+<body>
+<h2>Nomes da História</h2>
+
+<div class="aulas">
+    @Html.Action("_ListEtapas","Home","Home/_ListEtapas")
+  
+</div>
+<div class="Sala_de_aula">
+    </div>
+<div class="Avatar"></div>
+
+</body>
+
+<style>
+
+    .aulas {
+        clear : both;
+        display: block;
+        float: left;
+        background: #a7eaff;
+        padding: 0px 0px;
+    }
+
+    .Sala_de_aula {
+        background: #808080;
+        padding: 200px 200px;
+    }
+
+     .Avatar {
+        display: block;
+        clear : both;
+        background: #a7eaff;
+        padding: 100px 100px;
+    }
+</style>

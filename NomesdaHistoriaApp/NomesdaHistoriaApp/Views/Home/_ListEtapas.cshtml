@@ -1,0 +1,18 @@
+﻿@model Dictionary<String,List<int>>
+
+
+
+<ul>
+@foreach (var item in Model.Keys)
+{
+    <li>
+        <h4>Etapa  : @item</h4>
+            <ul>
+            @foreach (var aula in Model[item])
+            {
+                <li>@Html.ActionLink("Aula "+aula,"Index")</li>
+            }
+            </ul>
+    </li>
+}
+</ul>    
