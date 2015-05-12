@@ -5,10 +5,10 @@ namespace NomesdaHistoriaApp.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class AulasDBContext : DbContext
+    public partial class AulasDB : DbContext
     {
-        public AulasDBContext()
-            : base("name=AulasDBContext")
+        public AulasDB()
+            : base("name=AulasDB")
         {
         }
 
@@ -44,6 +44,10 @@ namespace NomesdaHistoriaApp.Models
 
             modelBuilder.Entity<Aulas>()
                 .Property(e => e.personagem)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Aulas>()
+                .Property(e => e.titulo)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Aulas>()

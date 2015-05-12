@@ -37,6 +37,9 @@ namespace NomesdaHistoriaApp.Models
 
         public int ordem { get; set; }
 
+        [StringLength(75)]
+        public string titulo { get; set; }
+
         public virtual ICollection<Ajudas> Ajudas { get; set; }
 
         public virtual ICollection<Apresentacoes> Apresentacoes { get; set; }
