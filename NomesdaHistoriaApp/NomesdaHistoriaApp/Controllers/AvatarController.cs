@@ -15,7 +15,7 @@ namespace NomesdaHistoriaApp.Controllers
         }
         public ActionResult MostraTutor(String username)
         {
-            
+            return View();   
         }
     }
 }

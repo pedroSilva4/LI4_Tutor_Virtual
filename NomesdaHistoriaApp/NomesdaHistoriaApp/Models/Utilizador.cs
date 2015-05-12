@@ -49,7 +49,7 @@ namespace NomesdaHistoriaApp.Models
             else
                 return false;
         }
-        public Boolean isValid_reg(String _username)
+        public Boolean isValid_login(String _username)
         {
 
             UtilizadorDBContext utdb = new UtilizadorDBContext();
