@@ -5,30 +5,30 @@ namespace NomesdaHistoriaApp.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class UtilizadorDBContext : DbContext
+    public partial class UtilizadoresDBcontext : DbContext
     {
-        public UtilizadorDBContext()
-            : base("name=UtilizadorDBContext")
+        public UtilizadoresDBcontext()
+            : base("name=UtilizadoresDBcontext")
         {
         }
 
-        public virtual DbSet<Utilizador> Utilizadores { get; set; }
+        public virtual DbSet<Utilizadores> Utilizadores { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Utilizador>()
+            modelBuilder.Entity<Utilizadores>()
                 .Property(e => e.username)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Utilizador>()
+            modelBuilder.Entity<Utilizadores>()
                 .Property(e => e.password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Utilizador>()
+            modelBuilder.Entity<Utilizadores>()
                 .Property(e => e.avatar)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Utilizador>()
+            modelBuilder.Entity<Utilizadores>()
                 .Property(e => e.tema_Ambiente)
                 .IsUnicode(false);
         }
