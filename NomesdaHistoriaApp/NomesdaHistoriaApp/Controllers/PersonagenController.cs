@@ -14,11 +14,12 @@ namespace NomesdaHistoriaApp.Controllers
         {
             return View();
         }
-        public ActionResult MostraTutor()
+        [HttpGet]
+        public ActionResult MostraTutor(String username = "")
         {
-            UtilizadorDBContext userDB = new UtilizadorDBContext();
-            Utilizador u = new Utilizador();
-            u = userDB.Utilizadores.Find("pedrinho");
+            UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
+            Utilizadores u = new Utilizadores();
+            u = usersDB.Utilizadores.Find(username);
            // string avatar = u.avatar;
             PerosnagensDBContext personagem = new PerosnagensDBContext();
             Personagen p = new Personagen();

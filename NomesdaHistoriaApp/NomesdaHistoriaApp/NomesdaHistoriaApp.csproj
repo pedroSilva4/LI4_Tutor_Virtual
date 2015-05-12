@@ -128,13 +128,8 @@
     <Compile Include="Models\Perguntas.cs" />
     <Compile Include="Models\DataContexts\PerosnagensDBContext.cs" />
     <Compile Include="Models\Personagen.cs" />
-<<<<<<< HEAD
     <Compile Include="Models\Utilizadores.cs" />
     <Compile Include="Models\UtilizadoresDBcontext.cs" />
-=======
-    <Compile Include="Models\DataContexts\UtilizadorDBContext.cs" />
-    <Compile Include="Models\Utilizador.cs" />
->>>>>>> origin/development
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
