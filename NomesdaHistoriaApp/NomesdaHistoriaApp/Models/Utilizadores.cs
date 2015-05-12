@@ -10,10 +10,13 @@ namespace NomesdaHistoriaApp.Models
     {
         [Key]
         [StringLength(75)]
+        [Display(Name = "Username")]
         public string username { get; set; }
 
         [Required]
         [StringLength(75)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
         public string password { get; set; }
 
         private int _pontos = 0;
@@ -44,5 +47,17 @@ namespace NomesdaHistoriaApp.Models
         [Required]
         [StringLength(75)]
         public string tema_Ambiente { get; set; }
+    }
+
+
+    public class ViewUser{
+
+        [Required]
+        [Display(Name = "Username")]
+        public String username { get; set; }
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public String password { get; set; }
     }
 }

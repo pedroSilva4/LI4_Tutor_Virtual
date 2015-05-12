@@ -3,38 +3,29 @@
     ViewBag.Title = "Nomes da História - tutor virtual";
 }
 
-<body>
-<h2>Nomes da História</h2>
 
-<div class="aulas">
-    @Html.Action("_ListEtapas","Home","Home/_ListEtapas")
+
+@if (Session["userID"] != null) { 
+    <div class="aulas">
+        @Html.Action("_ListEtapas","Home","Home/_ListEtapas")
   
-</div>
-<div class="Sala_de_aula">
     </div>
-<div class="Avatar"></div>
+    <div class="Sala_de_aula">
+    </div>
+    <div class="Avatar">
+    </div>
+}
+else
+{
+    <div class="container text-center">
+        <h2 class="text-primary text-center">Olá, Bem Vindo aos Nome da História</h2>
 
-</body>
+        <p>introduçao a cenas ficava fixed!</p>
 
-<style>
-
-    .aulas {
-        clear : both;
-        display: block;
-        float: left;
-        background: #a7eaff;
-        padding: 0px 0px;
-    }
-
-    .Sala_de_aula {
-        background: #808080;
-        padding: 200px 200px;
-    }
-
-     .Avatar {
-        display: block;
-        clear : both;
-        background: #a7eaff;
-        padding: 100px 100px;
-    }
-</style>
+        <h4>Vamos Aprender?</h4>
+       
+            @Html.ActionLink("Entrar", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })
+       
+            @Html.ActionLink("Registar", "Register", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })
+    </div>
+}
