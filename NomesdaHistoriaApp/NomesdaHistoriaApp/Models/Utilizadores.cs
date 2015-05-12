@@ -16,19 +16,26 @@ namespace NomesdaHistoriaApp.Models
         [StringLength(75)]
         public string password { get; set; }
 
-        public int? pontos { get; set; }
+        private int _pontos = 0;
+        public int? pontos { get { return _pontos; } set { _pontos =(int)value; } }
 
-        public int? imagemVis { get; set; }
+        private int _iv = 1;
+        public int? imagemVis { get { return _iv; } set { _iv = (int)value; } }
 
-        public int? audioVis { get; set; }
+        private int _av = 1;
+        public int? audioVis { get { return _av; } set { _av = (int)value; } }
 
-        public int? videoVis { get; set; }
+        private int _vv = 1;
+        public int? videoVis { get { return _vv; } set { _vv = (int)value; } }
 
-        public int? videoAprovado { get; set; }
+        private int _va = 1;
+        public int? videoAprovado { get { return _va; } set { _va = (int)value; } }
 
-        public int? audioAprovado { get; set; }
+        private int _aa = 1;
+        public int? audioAprovado { get { return _aa; } set { _aa = (int)value; } }
 
-        public int? imagemAprovado { get; set; }
+        private int _ia = 1;
+        public int? imagemAprovado { get { return _ia; } set { _ia = (int)value; } }
 
         [Required]
         [StringLength(75)]
