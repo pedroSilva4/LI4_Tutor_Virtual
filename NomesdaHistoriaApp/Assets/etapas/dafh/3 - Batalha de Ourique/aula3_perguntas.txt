@@ -1,0 +1,22 @@
+Q? -> 7
+
+Q::	Em que ano foi a Batalha de Ourique?
+R:.	1139
+
+Q::	Quantos eram os reis mouros que D. Afonso Henriques teve de enfrentar na batalha de Ourique?
+R:.	5
+
+Q::	Após a Batalha de Ourique, D. Afonso Henriques é eleito?
+R:.	Rei de Portugal
+
+Q::	Por quem é que D. Afonso Henriques é aclamado Rei de Portugal?
+R:.	Suas tropas
+
+Q::	Em que ano se casou D. Afonso Henriques?
+R:.	1146
+
+Q::	Com quem casou D. Afonso Henriques?
+R:.	D. Mafalda
+
+Q::	Quantos filhos teve D. Afonso Henriques?
+R:.	7

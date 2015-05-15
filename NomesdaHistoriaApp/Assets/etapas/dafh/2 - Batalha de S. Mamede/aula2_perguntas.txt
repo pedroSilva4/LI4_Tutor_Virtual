@@ -1,0 +1,16 @@
+Q? -> 5
+
+Q::	Em que ano D. Afonso Henriques se aconteceu a Batalha de S. Mamede?
+R:.	1128
+
+Q::	Quem defronta D. Afonso Henriques na Batalha de S. Mamede?
+R:.	A mãe
+
+Q::	Após a Batalha de S. Mamede, D. Afonso Henriques ficou a governar...
+R:.	O Condado Portucalense
+
+Q::	Em que batalha D. Afonso Henriques defrontou a mãe?
+R:.	Batalha de S. Mamede
+
+Q::	Para onde viaja D. Afonso Henriques depois da Batalha de S. Mamede?
+R:. Para o sul

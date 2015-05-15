@@ -1,0 +1,22 @@
+Q? -> 7
+
+Q:: Em que ano D. Afonso Henriques vai para a conquistar Lisboa?
+R:.	1147
+
+Q::	Quem ajudou D. Afonso Henriques a conquistar Lisboa?
+R:.	Cruzados Ingleses
+
+Q::	A quem é que D. Afonso Henriques conquistou a cidade de Lisboa?
+R:.	Aos Mouros
+
+Q::	Em que ano se inicia a conquistas de Badajoz?
+R:.	1169
+
+Q::	Quantos anos tinha D. Afonso Henriques quando tentou conquistar Badajoz?
+R:.	60
+
+Q::	O que aconteceu a D. Afonso Henriques durante a conquista de Badajoz?
+R:.	Partiu uma Perna
+
+Q::	A que se dedicou D. Afonso Henriques após partir a perna?
+R:.	Estruturar e fortalecer as terras conquistadas

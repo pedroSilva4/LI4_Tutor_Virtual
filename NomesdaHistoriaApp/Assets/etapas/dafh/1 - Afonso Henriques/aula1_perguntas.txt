@@ -1,0 +1,28 @@
+Q? -> 10 
+
+Q:: Em que ano nasceu D. Afonso Henriques?
+R:. 1103
+
+Q:: Onde nasceu D. Afonso Henriques?
+R:. Condado Portucalense
+
+Q:: Quem foi o pai de D. Afonso Henriques?
+R:.	Conde D. Henrique
+
+Q::	Quem foi a mãe de D. Afonso Henriques?
+R:.	D. Teresa
+
+Q::	O nome de Afonso de D. Afonso Henriques foi dado em honra de quem?
+R:.	D. Afonso XI
+
+Q::	Para que foi treinado D. Afonso Henriques na sua infância?
+R:.	Ser cavaleiro
+
+Q::	Em que catedral se tornou cavaleiro D. Afonso Henriques?
+R:.	Catedral de Zamora
+
+Q::	Afonso XI, avó D. Afonso Henriques, era rei de?
+R:.	Leão e Castela
+
+Q::	Quem foi a esposa de D.Henrique, pai de D. Afonso Henriques?
+R:.	D. Teresa

@@ -1,0 +1,22 @@
+Q? -> 7
+
+Q:: Em que ano é que D. Afonso Henriques foi  reconhecido como rei de Portugal?
+R:.	1179
+
+Q::	Que Papa é que reconheceu D.Afonso Henriques como rei de Portugal?
+R:.	Alexandre III
+
+Q::	Quando D. Afonso Henriques ficou mais velho, para quem é que passou parte dos seus poderes?
+R:.	Filho
+
+Q::	Como se chama o filho de D. Afonso Henriques que ficou com a maior parte dos seus poderes?
+R:.	D. Sancho I
+
+Q::	Quem foi o 1º Rei de Portugal?
+R:.	D. Afonso Henriques
+
+Q::	D. Afonso Henriques tamtém é conhecido por?
+R:.	O Conquistador
+
+Q::	Quantos anos D. Afonso Henriques reinou Portugal?
+R:.	57
