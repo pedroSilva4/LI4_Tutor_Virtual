@@ -12,6 +12,7 @@ namespace NomesdaHistoriaApp.Models
         {
             Ajudas = new HashSet<Ajudas>();
             Apresentacoes = new HashSet<Apresentacoes>();
+            Avaliacoes = new HashSet<Avaliacoes>();
             Perguntas = new HashSet<Perguntas>();
         }
 
@@ -43,6 +44,8 @@ namespace NomesdaHistoriaApp.Models
         public virtual ICollection<Ajudas> Ajudas { get; set; }
 
         public virtual ICollection<Apresentacoes> Apresentacoes { get; set; }
+
+        public virtual ICollection<Avaliacoes> Avaliacoes { get; set; }
 
         public virtual ICollection<Perguntas> Perguntas { get; set; }
     }

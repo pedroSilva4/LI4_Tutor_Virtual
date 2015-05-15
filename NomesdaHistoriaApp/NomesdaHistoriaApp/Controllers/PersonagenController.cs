@@ -20,7 +20,6 @@ namespace NomesdaHistoriaApp.Controllers
             UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
             Utilizadores u = new Utilizadores();
             u = usersDB.Utilizadores.Find(username);
-           // string avatar = u.avatar;
             PerosnagensDBContext personagem = new PerosnagensDBContext();
             Personagen p = new Personagen();
             p = personagem.Personagens.Find(u.avatar.ToString());

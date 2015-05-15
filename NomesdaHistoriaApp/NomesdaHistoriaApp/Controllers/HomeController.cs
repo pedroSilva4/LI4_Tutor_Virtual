@@ -17,20 +17,44 @@ namespace NomesdaHistoriaApp.Controllers
         }
 
         public ActionResult _ListEtapas()
-        { 
-            AulasDB AulasDb = new AulasDB();
+        {
+            AulasDbContext aulasDB = new AulasDbContext();
             PerosnagensDBContext PersonagensDb = new PerosnagensDBContext();
             Dictionary<String, List<String>> aulasMap = new Dictionary<String, List<String>>();
-            foreach (Personagen p in PersonagensDb.Personagens)
-            {
-                List<String> titles = new List<String>();
-                foreach (Aulas a in AulasDb.Aulas.Where(a => a.personagem == p.nome))
-                {
-                    titles.Add(a.titulo);
+            int prox = 0;
+            String user = Session["userID"].ToString();
+            foreach(Conquistas c in aulasDB.Conquistas.Where(c => c.username.Equals(user))){
+                List<String> aulas = new List<String>();
+                foreach(Aulas a in aulasDB.Aulas.Where(a => a.personagem == c.personagem)){
+                    aulas.Add(a.titulo);
                 }
-                aulasMap.Add(p.nome, titles);
+                int etapa = PersonagensDb.Personagens.Find(c.personagem).etapa;
+                if (etapa > prox)
+                    prox = etapa;
+                aulasMap.Add(c.personagem, aulas);
             }
-
+            prox++;
+            String proxima = "";
+            foreach (Personagen p in PersonagensDb.Personagens.Where(p => p.etapa == prox))
+            {
+                proxima = p.nome;
+            }
+            prox = 0;
+            List<String> novas = new List<String>();
+            foreach (Aulas a in aulasDB.Aulas.Where(a => a.personagem == proxima))
+            {
+                foreach (Avaliacoes av in aulasDB.Avaliacoes.Where(av => av.aula == a.cod && av.username == user))
+                {
+                        novas.Add(a.titulo);
+                        if (a.ordem > prox)
+                            prox = a.ordem;
+                }
+                
+            }
+            prox++;
+            foreach (Aulas a in aulasDB.Aulas.Where(a => a.personagem == proxima && a.ordem == prox))
+                novas.Add(a.titulo);
+            aulasMap.Add(proxima, novas);
             return View(aulasMap);
         }
 
