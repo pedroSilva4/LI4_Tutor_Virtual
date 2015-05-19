@@ -17,18 +17,24 @@
 }
 else
 {
-    <div class="container text-center">
-        <h2 class="text-primary text-center">Olá, Bem Vindo aos Nome da História</h2>
+    <body background="~/Assets/Backgrounds_ops/Portugal.jpg" style="width:auto;height:auto">
+        <div class="container text-center">
 
-        <p>introduçao a cenas ficava fixed!</p>
+            <h1 class="text-primary text-center">Olá, Bem Vindo aos Nome da História</h1>
 
-        <h4>Vamos Aprender?</h4>
-        <h2>imagem</h2>
-        <div><img src="~/Assets/sprites/ldc/camoes_notTalking.jpg" alt="Camões avatar"></div>
+            <p>introduçao a cenas ficava fixed!</p>
 
-       
+
+            <div>
+                <img src="~/Assets/sprites/ldc/camoes_1.png" alt="Camões avatar">
+                <img src="~/Assets/sprites/dafh/Afonso_1.png" alt="Camões avatar">
+            </div>
+            <h3>Vamos Aprender?</h3>
+
+
             @Html.ActionLink("Entrar", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })
-       
+
             @Html.ActionLink("Registar", "Register", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })
-    </div>
+        </div>
+    </body>
 }
