@@ -129,7 +129,7 @@
     <Compile Include="Models\DataContexts\AulasDbContext.cs" />
     <Compile Include="Models\Avaliacoes.cs" />
     <Compile Include="Models\Conquistas.cs" />
-    <Compile Include="Models\DataContexts\AulasDB.cs" />
+    <Compile Include="Models\Estatistica.cs" />
     <Compile Include="Models\Multimedia.cs" />
     <Compile Include="Models\Perguntas.cs" />
     <Compile Include="Models\DataContexts\PerosnagensDBContext.cs" />
