@@ -48,5 +48,19 @@ namespace NomesdaHistoriaApp.Models
         public virtual ICollection<Avaliacoes> Avaliacoes { get; set; }
 
         public virtual ICollection<Perguntas> Perguntas { get; set; }
+
+        public AulaViewModel gerarAula(Estatistica stats) {
+            return new AulaViewModel();
+        }
+
+        public class AulaViewModel{
+
+            [Required]
+            public string titulo { get; set; }
+            [Required]
+            public Apresentacoes Apresentacao { get; set; }
+
+
+        }
     }
 }
