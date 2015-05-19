@@ -5,6 +5,7 @@ namespace NomesdaHistoriaApp.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using NomesdaHistoriaApp.Models;
 
     public partial class Aulas
     {
@@ -49,16 +50,55 @@ namespace NomesdaHistoriaApp.Models
 
         public virtual ICollection<Perguntas> Perguntas { get; set; }
 
-        public AulaViewModel gerarAula(Estatistica stats) {
+        public AulaViewModel gerarAula(Estatistica stats,int apAnterior) {
+
+
+            Random rnd = new Random();
+            int opt = rnd.Next(1, 100);
+            String apType =  wichmedia(opt, stats);
+            Dictionary<int, float> pesos = new Dictionary<int,float>();
+            float totalp = 0.0f;
+            foreach(Apresentacoes ap in this.Apresentacoes){
+                if (ap.tipo == apType) {
+                    if (apAnterior != ap.cod)
+                    {
+                        pesos.Add(ap.cod, (float)(ap.aprovacoes / ap.visualizacoes));
+                        totalp += (float)(ap.aprovacoes / ap.visualizacoes);
+                    }
+                }
+            }
+
+            foreach (int i in pesos.Keys) {
+                float p = pesos[i];
+                pesos[i] = p / totalp;
+            }
+
+            opt = rnd.Next(1, 100);
+            int apid = 1;
+               
+            
+
+            AulaViewModel aula = new AulaViewModel();
+            aula.titulo = this.titulo;
+            aula.apresentacao = null;
             return new AulaViewModel();
         }
 
+        private String wichmedia(int opt, Estatistica stats) {
+
+            if (opt <= stats.pVideo * 100)
+                return "video";
+            if (opt <= (stats.pVideo + stats.pAudio) * 100)
+                return "audio";
+            else
+                return "imagem";
+        }
         public class AulaViewModel{
 
             [Required]
             public string titulo { get; set; }
             [Required]
-            public Apresentacoes Apresentacao { get; set; }
+            public Apresentacoes apresentacao { get; set; }
 
 
         }
