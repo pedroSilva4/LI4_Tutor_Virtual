@@ -1,11 +1,13 @@
 namespace NomesdaHistoriaApp.Models
 {
     using System;
+    using System.Linq;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
     using NomesdaHistoriaApp.Models;
+    using System.Collections;
 
     public partial class Aulas
     {
@@ -68,19 +70,25 @@ namespace NomesdaHistoriaApp.Models
                 }
             }
 
+            opt = rnd.Next(1, 100);
+            int apid = -1;
+            float prev = 0;
             foreach (int i in pesos.Keys) {
                 float p = pesos[i];
                 pesos[i] = p / totalp;
-            }
 
-            opt = rnd.Next(1, 100);
-            int apid = 1;
-               
-            
+                if (opt <= (pesos[i])*100 + prev)
+                {
+                    apid = i;
+                    break;
+                }
+
+                prev += pesos[i];
+            }
 
             AulaViewModel aula = new AulaViewModel();
             aula.titulo = this.titulo;
-            aula.apresentacao = null;
+            aula.apresentacao = (from x in this.Apresentacoes where x.cod == apid select x).FirstOrDefault();
             return new AulaViewModel();
         }
 

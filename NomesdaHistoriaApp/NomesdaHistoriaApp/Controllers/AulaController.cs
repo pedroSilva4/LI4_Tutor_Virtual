@@ -24,7 +24,11 @@ namespace NomesdaHistoriaApp.Controllers
 
             Estatistica stat = new Estatistica(aula,u);
 
-            NomesdaHistoriaApp.Models.Aulas.AulaViewModel al = aula.gerarAula(stat); 
+            if (Session["aulaAP"] == null) Session["aulaAP"] = -1;
+
+            NomesdaHistoriaApp.Models.Aulas.AulaViewModel al = aula.gerarAula(stat,(int)Session["aulaAP"]);
+
+            Session["aulaAP"] = al.apresentacao.cod;
 
             return View(al);
         }

@@ -20,7 +20,6 @@ C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHist
 C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Mvc.xml
 C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.dll
 C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.pdb
-C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesDaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\NomesdaHistoriaApp.dll.config
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\NomesdaHistoriaApp.dll
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\NomesdaHistoriaApp.pdb
