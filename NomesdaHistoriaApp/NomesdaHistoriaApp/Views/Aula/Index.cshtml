@@ -1,0 +1,27 @@
+﻿@model NomesdaHistoriaApp.Models.Aulas.AulaViewModel
+
+@if (Model != null) { 
+    
+
+    ViewBag.Title = Model.titulo;
+
+<h2>
+   @Model.titulo
+</h2>
+
+
+        <div class="media">
+            @Html.Action("_LoadMedia",new {ap = Model.apresentacao})
+        </div>
+
+<div class="tutor">
+
+</div>
+
+
+<div class="avaliacao">
+</div>
+
+}else{
+    <h2>Ocurreu um erro ao Carregar a aula</h2>
+}

@@ -43,3 +43,4 @@ C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHis
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.dll
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.pdb
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache
+C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesDaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache

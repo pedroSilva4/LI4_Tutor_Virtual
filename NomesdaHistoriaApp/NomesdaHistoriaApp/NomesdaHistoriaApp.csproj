@@ -137,6 +137,7 @@
     <Compile Include="Models\Personagen.cs" />
     <Compile Include="Models\Utilizadores.cs" />
     <Compile Include="Models\DataContexts\UtilizadoresDBcontext.cs" />
+    <Compile Include="Models\VideoResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -153,6 +154,9 @@
     <Content Include="Views\Personagen\MostraTutor.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Aula\Index.cshtml" />
+    <Content Include="Views\Aula\_LoadMedia.cshtml" />
+    <Content Include="Views\Aula\NoApresentacoesAction.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

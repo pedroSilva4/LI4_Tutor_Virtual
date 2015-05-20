@@ -23,17 +23,17 @@ namespace NomesdaHistoriaApp.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int cod { get; set; }
 
-        public int? audioVis { get; set; }
+        public int audioVis { get; set; }
 
-        public int? videoVis { get; set; }
+        public int videoVis { get; set; }
 
-        public int? imagemVis { get; set; }
+        public int imagemVis { get; set; }
 
-        public int? audioAprov { get; set; }
+        public int audioAprov { get; set; }
 
-        public int? videoAprov { get; set; }
+        public int videoAprov { get; set; }
 
-        public int? imagemAprov { get; set; }
+        public int imagemAprov { get; set; }
 
         [Required]
         [StringLength(75)]
@@ -54,42 +54,48 @@ namespace NomesdaHistoriaApp.Models
 
         public AulaViewModel gerarAula(Estatistica stats,int apAnterior) {
 
-
-            Random rnd = new Random();
-            int opt = rnd.Next(1, 100);
-            String apType =  wichmedia(opt, stats);
-            Dictionary<int, float> pesos = new Dictionary<int,float>();
-            float totalp = 0.0f;
-            foreach(Apresentacoes ap in this.Apresentacoes){
-                if (ap.tipo == apType) {
-                    if (apAnterior != ap.cod)
-                    {
-                        pesos.Add(ap.cod, (float)(ap.aprovacoes / ap.visualizacoes));
-                        totalp += (float)(ap.aprovacoes / ap.visualizacoes);
-                    }
-                }
-            }
-
-            opt = rnd.Next(1, 100);
-            int apid = -1;
-            float prev = 0;
-            foreach (int i in pesos.Keys) {
-                float p = pesos[i];
-                pesos[i] = p / totalp;
-
-                if (opt <= (pesos[i])*100 + prev)
-                {
-                    apid = i;
-                    break;
-                }
-
-                prev += pesos[i];
-            }
-
             AulaViewModel aula = new AulaViewModel();
             aula.titulo = this.titulo;
-            aula.apresentacao = (from x in this.Apresentacoes where x.cod == apid select x).FirstOrDefault();
-            return new AulaViewModel();
+            while (aula.apresentacao == null)
+            {
+                Random rnd = new Random();
+                int opt = rnd.Next(1, 100);
+                String apType = wichmedia(opt, stats);
+                Dictionary<int, float> pesos = new Dictionary<int, float>();
+                float totalp = 0.0f;
+                foreach (Apresentacoes ap in this.Apresentacoes)
+                {
+                    if (ap.tipo == apType)
+                    {
+                        if (apAnterior != ap.cod)
+                        {
+                            pesos.Add(ap.cod, (float)(ap.aprovacoes / ap.visualizacoes));
+                            totalp += (float)(ap.aprovacoes / ap.visualizacoes);
+                        }
+                    }
+                }
+
+                opt = rnd.Next(1, 100);
+                int apid = -1;
+                float prev = 0;
+                foreach (int i in pesos.Keys)
+                {
+                    float p = pesos[i];
+                    pesos[i] = p / totalp;
+
+                    if (opt <= (pesos[i]) * 100 + prev)
+                    {
+                        apid = i;
+                        break;
+                    }
+
+                    prev += pesos[i];
+                }
+
+
+                aula.apresentacao = (from x in this.Apresentacoes where x.cod == apid select x).FirstOrDefault();
+            }
+            return aula;
         }
 
         private String wichmedia(int opt, Estatistica stats) {
