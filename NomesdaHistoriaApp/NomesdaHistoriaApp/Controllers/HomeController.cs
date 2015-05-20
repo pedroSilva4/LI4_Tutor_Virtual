@@ -41,25 +41,20 @@ namespace NomesdaHistoriaApp.Controllers
             }
             prox = 0;
             List<String> novas = new List<String>();
-            int nProx = 0;
             foreach (Aulas a in aulasDB.Aulas.Where(a => a.personagem == proxima))
             {
-                nProx++;
                 foreach (Avaliacoes av in aulasDB.Avaliacoes.Where(av => av.aula == a.cod && av.username == user))
                 {
                         novas.Add(a.titulo);
                         if (a.ordem > prox)
                             prox = a.ordem;
                 }
-                
-            }
-            if (nProx > 0) {
-                foreach (Aulas a in aulasDB.Aulas.Where(a => a.personagem == proxima && a.ordem == prox))
-                    novas.Add(a.titulo);
-                aulasMap.Add(proxima, novas);
             }
             prox++;
-           
+            foreach (Aulas a in aulasDB.Aulas.Where(a => a.personagem == proxima && a.ordem == prox))
+                novas.Add(a.titulo);
+            if(!proxima.Equals(""))
+                aulasMap.Add(proxima, novas); 
             return View(aulasMap);
         }
 
