@@ -8,9 +8,9 @@ namespace NomesdaHistoriaApp.Models
     public class Estatistica
     {
 
-        public int pAudio { get; set; }
-        public int pVideo { get; set; }
-        public int pImg { get; set; }
+        public float pAudio { get; set; }
+        public float pVideo { get; set; }
+        public float pImg { get; set; }
 
 
         public Estatistica(Aulas a,Utilizadores u) {
@@ -41,9 +41,9 @@ namespace NomesdaHistoriaApp.Models
             /*
              * calculo final dos pesos
              */
-            this.pVideo =(int)(p1 / pt);
-            this.pAudio = (int)(p2 / pt);
-            this.pImg = (int)(p3 / pt);
+            this.pVideo =(p1 / pt);
+            this.pAudio = (p2 / pt);
+            this.pImg = (p3 / pt);
         }
     }
 }
