@@ -29,7 +29,7 @@
 
     <div class="anyClass">
        @{
-            var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia, Apid = Model.cod });
+            var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia.ToList(), Apid = Model.cod });
        } 
             <ul>
                @arr

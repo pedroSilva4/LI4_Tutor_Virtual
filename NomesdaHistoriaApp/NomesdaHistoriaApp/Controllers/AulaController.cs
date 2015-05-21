@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using NomesdaHistoriaApp.Models;
 using System.IO;
+using System.Web.Hosting;
 
 namespace NomesdaHistoriaApp.Controllers
 {
@@ -38,7 +39,6 @@ namespace NomesdaHistoriaApp.Controllers
 
         [HttpGet]
         public ActionResult _LoadMedia(Apresentacoes ap){
-
             return View(ap);
         }
 
@@ -58,14 +58,20 @@ namespace NomesdaHistoriaApp.Controllers
             foreach (Multimedia m in multimedia.Where(m => m.apresentacoes_cod == Apid))
             {
                 if (ordem == m.ordem)
-                    result += "<li><img src=\"~/" + m.PATH+"><p>"+parseFile(m.texto)+"</p></li>\n" ;
+                {
+                    var imgFilePath = HostingEnvironment.MapPath("~/" + m.PATH);
+                    result += "<li><img src=\""+imgFilePath + "\" > <p>" + parseFile(m.texto) + "</p></li>\n";
+                    ordem++;
+                }
             }
 
             return result;
         }
 
         public String parseFile(String Path) {
-            String text = System.IO.File.ReadAllText(@"~/" + Path);
+
+            var textFilePath = HostingEnvironment.MapPath("~/"+Path);
+            String text = System.IO.File.ReadAllText(textFilePath,System.Text.Encoding.UTF8);
 
 
             Console.Write(text);
