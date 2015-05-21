@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using NomesdaHistoriaApp.Models;
+using System.IO;
 
 namespace NomesdaHistoriaApp.Controllers
 {
@@ -50,5 +50,28 @@ namespace NomesdaHistoriaApp.Controllers
         {
             return View();
         }
+
+        public String GetImages(List<Multimedia> multimedia, int Apid) {
+            String result = "";
+            int ordem = 1;
+
+            foreach (Multimedia m in multimedia.Where(m => m.apresentacoes_cod == Apid))
+            {
+                if (ordem == m.ordem)
+                    result += "<li><img src=\"~/" + m.PATH+"><p>"+parseFile(m.texto)+"</p></li>\n" ;
+            }
+
+            return result;
+        }
+
+        public String parseFile(String Path) {
+            String text = System.IO.File.ReadAllText(@"~/" + Path);
+
+
+            Console.Write(text);
+            return text;
+           
+        }
+
     }
 }

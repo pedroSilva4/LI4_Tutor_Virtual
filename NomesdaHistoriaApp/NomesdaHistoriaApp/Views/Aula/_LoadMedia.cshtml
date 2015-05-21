@@ -5,19 +5,35 @@
 @if (Model.tipo == "video")
 {
     <video controls>
-        <source  src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mp4">
+        <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mp4">
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/ogg">
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mpeg">
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/3gpp">
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/webm">
     </video>
+
+
+}
+
+@if (Model.tipo == "audio") {
+
+
+
+}
+
+@if (Model.tipo == "imagem") {
+
+   
+          
     
 
-}
-
-@if (Model.tipo == "audio") { 
-    
-}
-
-@if (Model.tipo == "imagem") { 
-}
+    <div class="anyClass">
+       @{
+            var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia, Apid = Model.cod });
+       } 
+            <ul>
+               @arr
+            </ul>
+</div>
+            
+            }
