@@ -25,6 +25,7 @@ namespace NomesdaHistoriaApp.Controllers
             }
             return View(res);
         }
+       
 
         public ActionResult _ListEtapas()
         {
@@ -171,7 +172,17 @@ namespace NomesdaHistoriaApp.Controllers
          */
         public ActionResult Details()
         {
-            return View();
+            String user = Session["userId"].ToString();
+            UtilizadoresDBcontext userDB = new UtilizadoresDBcontext();
+            Dictionary<String, int> statistics = new Dictionary<string, int>();
+            statistics.Add("Visualizações video", (int)userDB.Utilizadores.Find(user).videoVis);
+            statistics.Add("Aprovações video", (int)userDB.Utilizadores.Find(user).videoAprovado);
+            statistics.Add("Visualizações audio", (int)userDB.Utilizadores.Find(user).audioVis);
+            statistics.Add("aprovações audio", (int)userDB.Utilizadores.Find(user).audioAprovado);
+            statistics.Add("Visualizações imagem", (int)userDB.Utilizadores.Find(user).imagemVis);
+            statistics.Add("aprovações imagem", (int)userDB.Utilizadores.Find(user).imagemAprovado);
+            statistics.Add("pontuação", (int)userDB.Utilizadores.Find(user).pontos);
+            return View(statistics);
         }
 
         public ActionResult Logout()
