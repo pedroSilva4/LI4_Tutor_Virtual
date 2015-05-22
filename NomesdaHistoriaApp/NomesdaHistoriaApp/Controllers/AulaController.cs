@@ -60,7 +60,9 @@ namespace NomesdaHistoriaApp.Controllers
                 if (ordem == m.ordem)
                 {
                     var imgFilePath = HostingEnvironment.MapPath("~/" + m.PATH);
-                    result += "<li><img src=\""+imgFilePath + "\" > <p>" + parseFile(m.texto) + "</p></li>\n";
+                    //result += "<li><img src=\"~/"+m.PATH+"\" alt=\"Smiley face\"> <p>" + parseFile(m.texto) + "</p></li>\n";
+
+                    result += "../../" + m.PATH + ";" + parseFile(m.texto) + "+";
                     ordem++;
                 }
             }
