@@ -15,6 +15,16 @@ namespace NomesdaHistoriaApp.Controllers
         {
                     return View();
         }
+        public ActionResult _ConsultarRanking()
+        {
+            UtilizadoresDBcontext userDB = new UtilizadoresDBcontext();
+            Dictionary<String, int> res = new Dictionary<String, int>();
+            foreach (Utilizadores u in userDB.Utilizadores.OrderByDescending(u => u.pontos))
+            {
+                res.Add(u.username, (int)u.pontos);
+            }
+            return View(res);
+        }
 
         public ActionResult _ListEtapas()
         {

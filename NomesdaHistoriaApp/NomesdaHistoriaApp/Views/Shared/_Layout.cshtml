@@ -25,6 +25,12 @@
                     @Html.ActionLink("Sair", "Logout", "Home", new { area = "" }, new { @class = "navbar-brand" })
                 }
             </div>
+            <div class=" navbar-right">
+                @if (Session["userID"] != null)
+                {
+                    @Html.ActionLink("Consultar Ranking", "_ConsultarRanking","Home", new { area = "" }, new { @class = "navbar-brand" })
+                }
+            </div>
             <div class="navbar-right">
                 @if (Session["userID"] == null) {
                      @Html.ActionLink("Entrar", "Login", "Home", new { area = "" }, new { @class = "navbar-brand" })

@@ -1,0 +1,15 @@
+﻿@model Dictionary<String,int>
+@{
+    ViewBag.Title = "_ConsultarRanking";
+}
+
+<h2>Ranking Nacional</h2>
+
+<ul>
+    @foreach (var item in Model.Keys)
+    {
+        <li>
+            <h4> @item : @Model[item] pontos</h4>
+        </li>
+    }
+</ul>  
