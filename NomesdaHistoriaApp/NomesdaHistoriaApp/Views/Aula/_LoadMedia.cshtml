@@ -1,32 +1,6 @@
 ﻿@model NomesdaHistoriaApp.Models.Apresentacoes
 
 
-<script>
-
-    $('.carousel-sync').on('click', '.carousel-control[data-slide]', function (ev) {
-        ev.preventDefault();
-        $('.carousel-sync').carousel($(this).data('slide'));
-    });
-    $('.carousel-sync').on('mouseover', function (ev) {
-        ev.preventDefault();
-        $('.carousel-sync').carousel('pause');
-    });
-
-
-    $('#myCarousel').bind('slid.bs.carousel', function (e) {
-
-        var $this = $(this);
-
-        $this.children('.carousel-control').show();
-
-        if ($('.carousel-inner .item:last').hasClass('active')) {
-            $('#myCarousel').carousel('pause');
-            $this.children('.right.carousel-control').hide();
-        } else if ($('.carousel-inner .item:first').hasClass('active')) {
-            $this.children('.left.carousel-control').hide();
-        }
-    });
-</script>
 
 
 @if (Model.tipo == "video")
@@ -50,13 +24,22 @@
 
 @if (Model.tipo == "imagem")
 {
-    <div id="myCarousel" class="carousel slide carousel-sync">
-        <div class="carousel-inner">
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
 
             @{
-    var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia.ToList(), Apid = Model.cod });
-    int i = 0;
+                    var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia.ToList(), Apid = Model.cod });
+                    int i = 0;
+                    int size = arr.ToString().Split('+').Length-1;
+    
             }
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                @for (int k = 1; k <= size; k++)
+                { 
+                    <li data-target="#myCarousel" data-slide-to="@k"></li>
+                }
+            </ol>
             @foreach (String s in (arr.ToString()).Split('+'))
             {
                 if (s != null && s != "")
@@ -65,7 +48,7 @@
                     {
 
                         <div class="item active">
-                            <img src="@s.Split(';')[0]" alt="" height="400" width="600" />
+                            <img src="@s.Split(';')[0]" alt="" height="300" width="500" />
                             <p> @s.Split(';')[1] </p>
                         </div>
                         i++;
@@ -73,7 +56,7 @@
                     else
                     {
                         <div class="item">
-                            <img src="@s.Split(';')[0]" alt="" height="400" width="600" />
+                            <img src="@s.Split(';')[0]" alt="" height="300" width="500" />
                             <p> @s.Split(';')[1] </p>
                         </div>
                     }
@@ -90,52 +73,39 @@
         </a>
     </div>
 
+
+<script>
+    var $myCarousel = $('#myCarousel');
+    var $myCarouselControls = $myCarousel.find('.carousel-control');
+    var $myCarouselControlsLeft = $myCarouselControls.filter('.left');
+    var $myCarouselControlsRight = $myCarouselControls.filter('.right');
+    var $myCarouselIndicators = $myCarousel.find('.carousel-indicators li');
+    $myCarousel.carousel('pause');
+    $myCarouselControlsLeft.hide();
+    var slideCount = $myCarouselIndicators.length;
+    $myCarousel.on('slid.bs.carousel', function () {
+        var index = $myCarouselIndicators.filter('.active').data('slide-to');
+        if (index == 0) { // is first slide
+            $myCarouselControlsRight.show();
+            $myCarouselControlsLeft.hide();
+        } else if (index == slideCount - 1) { // is last slide
+            $myCarouselControlsLeft.show();
+            $myCarouselControlsRight.hide();
+        } else { // is not first or last slide
+            $myCarouselControls.show();
+        }
+    })
+
+</script>
+
+
 }
 
 
-
-
-      <!--
-
-        <div class="anyClass">
-           @{/**
-            var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia.ToList(), Apid = Model.cod });
-            }
-            <ul>
-                @foreach (String s in (arr.ToString()).Split('+'))
-               {
-                   if (s != null && s != "") {
-                    <li>
-                        <table>
-                            <tr>
-                                <td>
-                                    <img src="@s.Split(';')[0]" alt="" height="400" width="600" />
-                                    <p> @s.Split(';')[1] </p>
-                                </td>
-                            </tr>
-                        </table>
-                    </li>
-                    }
-               }
-
-            </ul>
-        </div>
-
-
-        <button class="prev"><<</button>
-        <button class="next"><<</button>
-
-        <script type="text/javascript">
-            $(function () {
-                $(".anyClass").CarouselLite({
-                    btnNext: ".next",
-                    btnPrev: ".prev"
-                });
-            });
-
-        </script>
-        *
-        * */
-
-        }
-          -->
+<style>
+    .carousel {
+    width: 500px;
+    height: 400px;    
+    vertical-align : central;
+    margin: 20px;
+}</style>
