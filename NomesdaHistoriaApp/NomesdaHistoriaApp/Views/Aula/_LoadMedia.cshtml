@@ -4,8 +4,13 @@
 
 
 @if (Model.tipo == "video")
+
+//HELP https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
+
+    //Problema: o video nao dá para reproduzir novamente!    
+    
 {
-    <video controls>
+    <video id="videoAula" controls>
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mp4">
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/ogg">
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mpeg">
@@ -13,7 +18,12 @@
         <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/webm">
     </video>
 
+    <div id="avButton">
+        @Html.ActionLink("Avaliação", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary", @id = "avaliacaoButton", @style = "display:none" })
+    </div>
 
+
+    //<input type="button" value="Create" onclick="location.href='@Url.Action("Avaliação", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })'" />
 }
 
 @if (Model.tipo == "audio") {
@@ -70,13 +80,23 @@
 
         </div>
 
+        <p></p>
+
+        <div id="avButton">
+            @Html.ActionLink("Avaliação", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary", @id = "avaliacaoButton", @style = "display:none" })
+        </div>
+
         <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
         </a>
         <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
         </a>
+
+
     </div>
+
+
 
 
 <script>
@@ -99,16 +119,36 @@
         } else if (index == slideCount - 1) { // is last slide
             $myCarouselControlsLeft.show();
             $myCarouselControlsRight.hide();
+            $("#avaliacaoButton").show();
      //       $myCarousel.carousel('pause');
         } else { // is not first or last slide
+            //para voltar a esconder o botao para a avaliacao 
+            //$("#avaliacaoButton").hide();
             $myCarouselControls.show();
         }
     })
 
 </script>
 
-
 }
+
+
+<script>       
+    //quando estiver o audio a funcionar
+    var audio = document.getElementById("audioAula");
+    audio.onended = function () {
+        $("#avaliacaoButton").show();
+        //alert("The audio has ended");
+    };
+</script>
+<script>
+    var video = document.getElementById("videoAula");
+    video.onended = function () {
+        $("#avaliacaoButton").show();
+        //alert("The video has ended");
+    };
+</script>
+
 
 
 <style>

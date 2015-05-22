@@ -44,3 +44,26 @@ C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHis
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.pdb
 C:\Users\xavier\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache
 C:\Users\Pedro\Documents\GitHub\LI4_Tutor_Virtual\NomesDaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\NomesdaHistoriaApp.dll.config
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\NomesdaHistoriaApp.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\NomesdaHistoriaApp.pdb
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\EntityFramework.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\EntityFramework.SqlServer.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Helpers.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Mvc.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Razor.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Webpages.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Webpages.Razor.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\EntityFramework.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\EntityFramework.SqlServer.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Razor.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Webpages.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Webpages.Razor.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Helpers.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Mvc.xml
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.dll
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.pdb
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache
