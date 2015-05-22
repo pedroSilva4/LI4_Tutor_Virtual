@@ -57,6 +57,15 @@ namespace NomesdaHistoriaApp.Controllers
                 aulasMap.Add(proxima, novas); 
             return View(aulasMap);
         }
+        public Dictionary<String, String> _listaAvatares()
+        {
+            PerosnagensDBContext personagemDB = new PerosnagensDBContext();
+            Dictionary<String, String> avatarMap = new Dictionary<String, String>();
+            foreach(Personagen p in personagemDB.Personagens.ToList()){
+                avatarMap.Add(p.nome, p.sprite);
+            }
+            return avatarMap;
+        }
 
         [HttpGet]
         public ActionResult Register()
@@ -162,5 +171,6 @@ namespace NomesdaHistoriaApp.Controllers
             Session["points"] = null;
             return RedirectToAction("Index", "Home");
         }
+        
     }
 }

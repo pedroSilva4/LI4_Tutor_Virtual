@@ -29,19 +29,33 @@
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.avatar, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.avatar, "", new { @class = "text-danger" })
+            <div class="radioButtonAvatar">
+                <img src="~/Assets/sprites/dafh/Afonso_1.png">
+                D. Afonso Henriques
+                @Html.RadioButtonFor(model => model.avatar, "D. Afonso Henriques") 
+
+            </div>
+            <div class="radioButtonAvatar">
+                <img src="~/Assets/sprites/ldc/camoes_1.png">
+                Luís de Camões
+                @Html.RadioButtonFor(model => model.avatar, "Luis de Camoes")
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.tema_Ambiente, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tema_Ambiente, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tema_Ambiente, "", new { @class = "text-danger" })
+            <div class="radioButtonTema">
+                <img src="~/Assets/Backgrounds_ops/gmr.jpg" height="108" width="276">
+                Guimarães
+                @Html.RadioButtonFor(model => model.tema_Ambiente, "guimaraes")
+            </div>
+            <div class="radioButtonTema">
+                <img src="~/Assets/Backgrounds_ops/25ABR74.jpg" height="105" width="168">
+                25 de Abril
+                @Html.RadioButtonFor(model => model.tema_Ambiente, "25 de Abril")
             </div>
         </div>
 
