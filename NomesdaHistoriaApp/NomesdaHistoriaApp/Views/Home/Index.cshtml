@@ -1,48 +1,60 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Nomes da História - tutor virtual";
 }
 
 
 
-@if (Session["userID"] != null) { 
-    <div class="aulas">
-        @Html.Action("_ListEtapas","Home","Home/_ListEtapas")
-  
-    </div>
-    <div class="Sala_de_aula">
-    </div>
-    <div class="Avatar">
+@if (Session["userID"] != null)
+{
+    <div class=" indexBodynU">
+        <div class="body-content">
+            <div class="container">
+                <div class="aulas">
+                    @Html.Action("_ListEtapas", "Home", "Home/_ListEtapas")
+                </div>
+                <div class="Sala_de_aula">
+                </div>
+                <div class="Avatar">
+                </div>
+            </div>
+        </div>
     </div>
 }
 else
 {
-    <body background="~/Assets/Backgrounds_ops/Portugal.jpg" style="width:auto;height:auto">
-        <div class="container text-center">
+    <div class=" indexBodynU">
+        <div class="body-content">
+            <div class="content">
+                <div class="container text-center">
 
-            <h1 class="text-primary text-center">Olá, Bem Vindo aos Nome da História</h1>
+                    <h1 class="text-primary text-center">Olá, Bem Vindo aos Nome da História</h1>
 
-            <p>introduçao a cenas ficava fixed!</p>
+                    <p>introduçao a cenas ficava fixed!</p>
 
 
-            <div>
-                <img src="~/Assets/sprites/ldc/camoes_1.png" alt="Camões avatar">
-                <img src="~/Assets/sprites/dafh/Afonso_1.png" alt="Camões avatar">
+                    <div class="container text-center">
+                        <div class="leftAvatar">
+                            <img class="welcomeAvatar" src="~/Assets/sprites/ldc/camoes_1.png" alt="Camões avatar">
+                        </div>
+                        <div class="rightAvatar">
+                            <img class="welcomeAvatar" src="~/Assets/sprites/dafh/Afonso_1.png" alt="Camões avatar">
+                        </div>
+                        <div class="welcome-video">
+                            <video width="640" height="480" controls>
+                                <source src="~/Assets/help/videoRegistar.mp4" type="video/mp4">
+                                <source src="~/Assets/help/videoRegistar.ogv" type="video/ogg">
+                                <source src="~/Assets/help/videoRegistar.webm" type="video/webm">
+                                O teu browser não suporta ficheiros de video
+                            </video>
+                        </div>
+                        <div class="container">
+                            <h3>Vamos Aprender?</h3>
+                            @Html.ActionLink("Entrar", "Login", "Home", new { area = "" }, new { @class = "btn btn-primary text-primary" })
+                            @Html.ActionLink("Registar", "Register", "Home", new { area = "" }, new { @class = "btn btn-primary text-primary" })
+                        </div>
+                    </div>
+                </div>
             </div>
-            <h3>Vamos Aprender?</h3>
-
-
-            @Html.ActionLink("Entrar", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })
-
-            @Html.ActionLink("Registar", "Register", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })
         </div>
-        <div>
-            <video width="640" height="480"  controls >
-                <source src="~/Assets/help/videoRegistar.mp4" type="video/mp4">
-                <source src="~/Assets/help/videoRegistar.ogv" type="video/ogg">
-                <source src="~/Assets/help/videoRegistar.webm" type="video/webm">
-                O teu browser não suporta ficheiros de video
-            </video>
-        </div>
-    </body>
+    </div>
 }

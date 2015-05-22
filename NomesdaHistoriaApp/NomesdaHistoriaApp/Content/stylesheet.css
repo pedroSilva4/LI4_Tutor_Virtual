@@ -1,0 +1,49 @@
+﻿
+
+.indexBodynU {
+    background-image : url("../Assets/Backgrounds_ops/Portugal.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    width : auto;
+    height :auto;
+    padding-bottom : 50px;
+}
+
+.indexBodyU {
+    width :auto;
+    height : auto;
+}
+
+.welcomeAvatar {
+    width: 70%;
+    height : 70%;
+    padding : 0px 0px 0px 0px;
+    margin :auto;
+}
+.container-welcome {
+    text-align:center;
+    margin : auto;
+}
+
+.welcome-video {
+    display:inline-block;
+    margin : auto;
+}
+
+video {
+    width: 75%;
+    height : 75%;   
+}
+
+.leftAvatar {
+    display:inline-block;
+}
+
+.rightAvatar {
+    display:inline-block;
+}
+
+.content {
+    height:100%;
+    
+}
