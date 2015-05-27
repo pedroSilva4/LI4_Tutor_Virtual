@@ -9,7 +9,6 @@
             <ul>
             @foreach (var aula in Model[item])
             {
-                @Html.BeginForm("Index", "Aula");
                 <li>@Html.ActionLink("Aula " + aula, "../Aula/Index", new { titulo = aula})</li>
             }
             </ul>

@@ -27,34 +27,51 @@
         });
 
         $("#effect").hide();
+        $("#talkingBalloon").hide();
     });
 
     $(function () {
         $("#menu").menu();
     });
+
+    function help(msg,top) {
+        $("#talkingBalloon").empty();
+        $("#talkingBalloon").append("<p>"+msg+"</p>");
+        $("#talkingBalloon").show();
+        $("#"+top).get(0).play();
+
+    };
+    
 </script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <div id="tutor-container">
-    <div id="effect">
-        <ul id="menu">
-            @foreach (String key in Model.DicionariodeAjudas.Keys)
-            {
-                <li>
-                    <span class="glyphicon-floppy-open glyphicon"></span>@key
-                    <ul>
-                        @foreach (NomesdaHistoriaApp.Models.Ajudas aj in Model.DicionariodeAjudas[key])
-                        {
-                            <li>
-                                @aj.topico
-                            </li>
-                        }
-                    </ul>
-                </li>
-            }
-        </ul>
-    </div>
-    <img class="tutor-image" src="~/@Model.sprite" id="mytutor">
-    <blockquote class="oval-speech-border"><p>"Estou a dizer Cenas"</p></blockquote>
+    <div class="opts">
+        <div id="effect">
+            <ul id="menu">
+                @foreach (String key in Model.DicionariodeAjudas.Keys)
+                {
+                    var i = 0;
+                    <li>
+                        <span class="glyphicon-floppy-open glyphicon"></span>@key
+                        <ul>
+                            @foreach (NomesdaHistoriaApp.Models.Ajudas aj in Model.DicionariodeAjudas[key])
+                            {
+                                i++;
+                                <li>
+                                   <div onclick="help('@aj.ajuda','@i')">@aj.topico</div>
+                                    <audio id="@i" hidden>
+                                        <source src="~/@aj.audio">
+                                    </audio>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+            </div>
+        </div>
+        <img class="tutor-image" src="~/@Model.sprite" id="mytutor">
+    <blockquote class="oval-speech-border" id="talkingBalloon"></blockquote>
     
 </div>
 
@@ -65,7 +82,7 @@
         width: 200px;
         background-color: #E6E6E6;
         display : inline-block;
-        z-index: 1; position:relative
+        z-index: 2; position:relative
     }
 
     .tutor-image {
@@ -76,9 +93,11 @@
  .oval-speech-border {
     z-index:1; 
     display : inline-block;
-    position: relative;
-    padding: 50px 10px;
-    margin: -180px;
+    position: relative ;
+    vertical-align :top;
+    padding: 50px 30px;
+    margin-left: -180px;
+    bottom : -50px;
     border: 10px solid #f3961c;
     text-align: center;
     color: #333;
@@ -101,9 +120,9 @@
  .oval-speech-border:before {
   content: "";
   position: absolute;
-  z-index: 2;
-  bottom: -40px;
-  right: 50%;
+  z-index: 1;
+  bottom: -30px;
+  right: 70%;
   width: 50px;
   height: 30px;
   border-style: solid;
@@ -116,4 +135,10 @@
   border-bottom-right-radius: 80px 50px;
   display: block;
 }
+
+    .opts {
+        float:left;
+        vertical-align:central;
+        margin-top: 100px;
+    }
 </style>
