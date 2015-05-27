@@ -18,4 +18,14 @@ namespace NomesdaHistoriaApp.Models
         [StringLength(255)]
         public string sprite { get; set; }
     }
-}
+
+
+    public class PersonagemViewModel {
+
+        public string nome { get; set; }
+        public int etapa { get; set; }
+        public string sprite { get; set; }
+
+        public Dictionary<String, List<Ajudas>> DicionariodeAjudas{get;set;}
+    }
+} 

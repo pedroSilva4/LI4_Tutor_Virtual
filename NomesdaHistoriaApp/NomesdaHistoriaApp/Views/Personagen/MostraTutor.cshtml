@@ -1,8 +1,119 @@
-﻿@model NomesdaHistoriaApp.Models.Personagen
+﻿@model NomesdaHistoriaApp.Models.PersonagemViewModel
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script>
+    $(function () {
+        // run the currently selected effect
+        function runEffect() {
+            // get effect type from
+            var selectedEffect = "clip";
 
-<h1>Avatar</h1>
-<ul>
-    <li>nome: @Model.nome</li>
-    <li>etapa: @Model.etapa</li>
-    <li>imagem: @Model.sprite</li>
-</ul>
+            // most effect types need no options passed by default
+            var options = {};
+            // some effects have required parameters
+            if (selectedEffect === "scale") {
+                options = { percent: 100 };
+            } else if (selectedEffect === "size") {
+                options = { to: { width: 280, height: 185 } };
+            }
+
+            // run the effect
+            $("#effect").toggle(selectedEffect, options, 500);
+        };
+      
+
+        // set effect from select menu value
+        $("#mytutor").click(function () {
+            runEffect();
+        });
+
+        $("#effect").hide();
+    });
+
+    $(function () {
+        $("#menu").menu();
+    });
+</script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="tutor-container">
+    <div id="effect">
+        <ul id="menu">
+            @foreach (String key in Model.DicionariodeAjudas.Keys)
+            {
+                <li>
+                    <span class="glyphicon-floppy-open glyphicon"></span>@key
+                    <ul>
+                        @foreach (NomesdaHistoriaApp.Models.Ajudas aj in Model.DicionariodeAjudas[key])
+                        {
+                            <li>
+                                @aj.topico
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+    <img class="tutor-image" src="~/@Model.sprite" id="mytutor">
+    <blockquote class="oval-speech-border"><p>"Estou a dizer Cenas"</p></blockquote>
+    
+</div>
+
+
+
+<style>
+    .ui-menu {
+        width: 200px;
+        background-color: #E6E6E6;
+        display : inline-block;
+        z-index: 1; position:relative
+    }
+
+    .tutor-image {
+        display : inline-block;
+        position:relative;
+    }
+
+ .oval-speech-border {
+    z-index:1; 
+    display : inline-block;
+    position: relative;
+    padding: 50px 10px;
+    margin: -180px;
+    border: 10px solid #f3961c;
+    text-align: center;
+    color: #333;
+    background: #fff;
+    -webkit-border-top-left-radius: 240px 140px;
+    -webkit-border-top-right-radius: 240px 140px;
+    -webkit-border-bottom-right-radius: 240px 140px;
+    -webkit-border-bottom-left-radius: 240px 140px;
+     border-radius: 240px / 140px;
+}
+
+ blockquote {
+  display: inline-block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
+}
+ 
+ .oval-speech-border:before {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  bottom: -40px;
+  right: 50%;
+  width: 50px;
+  height: 30px;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: #f3961c;
+  margin-right: -10px;
+  background: transparent;
+  -webkit-border-bottom-right-radius: 80px 50px;
+  -moz-border-radius-bottomright: 80px 50px;
+  border-bottom-right-radius: 80px 50px;
+  display: block;
+}
+</style>

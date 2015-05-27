@@ -154,12 +154,12 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\_ListEtapas.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Personagen\MostraTutor.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Aula\Index.cshtml" />
     <Content Include="Views\Aula\_LoadMedia.cshtml" />
     <Content Include="Views\Aula\NoApresentacoesAction.cshtml" />
+    <Content Include="Views\Personagen\MostraTutor.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

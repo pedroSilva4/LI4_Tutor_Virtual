@@ -15,15 +15,32 @@ namespace NomesdaHistoriaApp.Controllers
             return View();
         }
         [HttpGet]
-        public ActionResult MostraTutor(String username = "")
+        public ActionResult MostraTutor()
         {
             UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
-            Utilizadores u = new Utilizadores();
-            u = usersDB.Utilizadores.Find(username);
-            PerosnagensDBContext personagem = new PerosnagensDBContext();
-            Personagen p = new Personagen();
-            p = personagem.Personagens.Find(u.avatar.ToString());
-            return View(p);   
+            String avatar = usersDB.Utilizadores.Find(Session["userID"]).avatar;
+            PerosnagensDBContext personagensDB = new PerosnagensDBContext();
+            Personagen p = personagensDB.Personagens.Find(avatar);
+
+            PersonagemViewModel pvm = new PersonagemViewModel();
+            pvm.nome = p.nome;
+            pvm.sprite = p.sprite;
+            pvm.etapa = p.etapa;
+
+            AulasDbContext aulasdb = new AulasDbContext();
+            pvm.DicionariodeAjudas = new Dictionary<String, List<Ajudas>>();
+            foreach (Personagen ps in personagensDB.Personagens)
+            {
+                String key = ps.nome;
+                List<Ajudas> ajudas = new List<Ajudas>();
+                foreach (Aulas al in aulasdb.Aulas.Where(al => al.personagem == key)) {
+                    ajudas.AddRange(al.Ajudas);
+                }
+                pvm.DicionariodeAjudas.Add(key, ajudas);
+            }
+            
+
+            return View(pvm);   
         }
     }
 }
