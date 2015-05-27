@@ -98,6 +98,8 @@ namespace NomesdaHistoriaApp.Controllers
                         db.SaveChanges();
                         FormsAuthentication.SetAuthCookie(user.username, true);
                         Session["userID"] = user.username;
+                        Session["points"] = user.pontos;
+                        Session["userAmb"] = "../" + new AmbientedeAulaDBContext().AmbientesDeAula.Find(user.tema_Ambiente).PATH;
                         return RedirectToAction("Index", "Home");
                     }
 
@@ -141,6 +143,7 @@ namespace NomesdaHistoriaApp.Controllers
                                 FormsAuthentication.SetAuthCookie(user.username, true);
                                 Session["userID"] = usr.username;
                                 Session["points"] = usr.pontos;
+                                Session["userAmb"] = "../" + new AmbientedeAulaDBContext().AmbientesDeAula.Find(usr.tema_Ambiente).PATH;
                                 return RedirectToAction("Index", "Home");
                             }
                             else {

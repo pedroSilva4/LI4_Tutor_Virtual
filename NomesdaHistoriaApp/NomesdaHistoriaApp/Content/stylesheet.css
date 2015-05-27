@@ -1,17 +1,7 @@
-﻿
-
-.indexBodynU {
-    background-image : url("../Assets/Backgrounds_ops/Portugal.jpg");
+﻿.bodyBackground{
     background-repeat: no-repeat;
     background-attachment: fixed;
-    width : auto;
-    height :auto;
-    padding-bottom : 50px;
-}
-
-.indexBodyU {
-    width :auto;
-    height : auto;
+    
 }
 
 .welcomeAvatar {
