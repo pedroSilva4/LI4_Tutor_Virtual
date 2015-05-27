@@ -126,8 +126,10 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Ajudas.cs" />
+    <Compile Include="Models\AmbientesDeAula.cs" />
     <Compile Include="Models\Apresentacoes.cs" />
     <Compile Include="Models\Aulas.cs" />
+    <Compile Include="Models\DataContexts\AmbientedeAulaDBContext.cs" />
     <Compile Include="Models\DataContexts\AulasDbContext.cs" />
     <Compile Include="Models\Avaliacoes.cs" />
     <Compile Include="Models\Conquistas.cs" />
