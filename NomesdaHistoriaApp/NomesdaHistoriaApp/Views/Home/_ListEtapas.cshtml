@@ -1,17 +1,17 @@
 ﻿@model Dictionary<String,List<String>>
 
 
-<ul>
+<ul class="ListAulas">
 @foreach (var item in Model.Keys)
 {
     <li>
         <h4>Etapa  : @item</h4>
-            <ul>
+        <ul class="ListAulas">
             @foreach (var aula in Model[item])
             {
-                <li>@Html.ActionLink("Aula " + aula, "../Aula/Index", new { titulo = aula})</li>
+                <li><div>@Html.ActionLink("Aula " + aula, "../Aula/Index", new { titulo = aula }, new { @class = "classLink card classCard" })</div></li>
             }
-            </ul>
+        </ul>
     </li>
 }
 </ul>    
