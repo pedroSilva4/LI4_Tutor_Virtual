@@ -235,3 +235,68 @@ body { padding-top: 70px; }
     text-align : left;
 }
 }
+
+
+  .ui-menu {
+        width: 200px;
+        background-color: #E6E6E6;
+        display : inline-block;
+        z-index: 2; position:relative
+    }
+
+    .tutor-image {
+        display : inline-block;
+        position:relative;
+    }
+
+ .oval-speech-border {
+    z-index:1; 
+    display : inline-block;
+    position: relative ;
+    vertical-align :top;
+    padding: 50px 30px;
+    margin-left: -180px;
+    bottom : -50px;
+    border: 10px solid #f3961c;
+    text-align: center;
+    color: #333;
+    background: #fff;
+    -webkit-border-top-left-radius: 240px 140px;
+    -webkit-border-top-right-radius: 240px 140px;
+    -webkit-border-bottom-right-radius: 240px 140px;
+    -webkit-border-bottom-left-radius: 240px 140px;
+     border-radius: 240px / 140px;
+}
+
+ blockquote {
+  display: inline-block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 40px;
+  -webkit-margin-end: 40px;
+}
+ 
+ .oval-speech-border:before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  bottom: -30px;
+  right: 70%;
+  width: 50px;
+  height: 30px;
+  border-style: solid;
+  border-width: 0 10px 10px 0;
+  border-color: #f3961c;
+  margin-right: -10px;
+  background: transparent;
+  -webkit-border-bottom-right-radius: 80px 50px;
+  -moz-border-radius-bottomright: 80px 50px;
+  border-bottom-right-radius: 80px 50px;
+  display: block;
+}
+
+.opts {
+        float:left;
+        vertical-align:central;
+        margin-top: 100px;
+}
