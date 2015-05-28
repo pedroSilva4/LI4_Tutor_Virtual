@@ -1,76 +1,151 @@
 ﻿@model NomesdaHistoriaApp.Models.Utilizadores
 
 @{
-    ViewBag.Title = "Register";
+    ViewBag.Title = "Registar";
+    Layout = "~/Views/Shared/_LayoutWithBar.cshtml";
 }
 
-<h2>Register</h2>
-
-
+<div class="container text-center">
+    <h2>Olá Bem-vindo, junta te a nós!</h2>
+</div>
+<div class="container">
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>Utilizadores</h4>
-        <hr />
+        <h4>Dados Gerais</h4>
+        
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            <hr />
             @Html.LabelFor(model => model.username, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.username, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.username, "", new { @class = "text-danger" })
             </div>
         </div>
+      
         <div class="form-group">
             @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
             </div>
+           
+        </div>
+        
+       
+        <div class="form-group">
+            <hr />
+                <div class="container">
+                    <h4>Escolhe aqui o teu Tutor</h4>
+                    <h5>O tutor será aquele a quem podes tirar as tuas duvidas!</h5>
+                        @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "control-label hidden"})
+                    
+                </div>
+            <hr />
+            <div class="container text-center">
+                <div class="radioButtonGroup">
+                    <label for="dafh" class="labelAvatar">
+                        <img src="~/Assets/sprites/dafh/Afonso_1.png">
+                    </label>
+                    @Html.RadioButtonFor(model => model.avatar, "D. Afonso Henriques", htmlAttributes: new { @id = "dafh", @name = "dafh",@checked="checked" })
+                    <label for=" dafh" class="labelAmb">
+                        D. Afonso Henriques
+                    </label>
+                </div>
+                <div class="radioButtonGroup">
+                    <label for="ldc" class="labelAvatar">
+                        <img src="~/Assets/sprites/ldc/camoes_1.png">
+                    </label>
+                    @Html.RadioButtonFor(model => model.avatar, "Luis de Camoes", htmlAttributes: new { @id = "ldc", @name = "ldc" })
+                    <label for="ldc" class="labelAmb">
+                        Luís de Camões
+                    </label>
+                </div>
+            </div>
+          </div>
+        
+        <div class="form-group">
+            <hr />
+            <div class="container">
+                <h4>Escolhe aqui o fundo de ecrã que mais gostas!</h4>
+                @Html.LabelFor(model => model.tema_Ambiente, htmlAttributes: new { @class = "control-label hidden" })
+            </div>
+            <hr/>
+            <div class="container text-center">
+                <div class="radioButtonGroup">
+                    <label for="guimaraes" class="labelAmb">
+                        <img src="~/Assets/Backgrounds_ops/gmr.jpg" height="135" width="198" class="label-default">
+                    </label>
+                    @Html.RadioButtonFor(model => model.tema_Ambiente, "Guimaraes", new {@id ="guimaraes",@name="guimaraes",@checked="checked"})
+                    <label for="guimaraes" class="labelAmb">
+                        Guimarães
+                    </label>
+                 </div>
+                <div class="radioButtonGroup">
+                    <label for="25deabril" class="labelAmb">
+                        <img src="~/Assets/Backgrounds_ops/25ABR74.jpg" height="135" width="198" class="drinkcard-cc">
+                    </label>
+                    @Html.RadioButtonFor(model => model.tema_Ambiente, "25 de Abril", new { @id = "25deabril", @name = "25deabril" })
+                    <label for="25deabril" class="labelAmb">
+                        25 de Abril
+                    </label>
+                </div>
+                <div class="radioButtonGroup">
+                    <label for="descobrimentos" class="labelAmb">
+                        <img src="~/Assets/Backgrounds_ops/descobrimentos.jpg" height="135" width="198" class="drinkcard-cc">
+                    </label>
+                    @Html.RadioButtonFor(model => model.tema_Ambiente, "Descobrimentos", new { @id = "descobrimentos", @name = "descobrimentos" })
+                    <label for="descobrimentos" class="labelAmb">
+                        Descobrimentos
+                    </label>
+                </div>
+
+            </div>
+            <hr/>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.avatar, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="radioButtonAvatar">
-                <img src="~/Assets/sprites/dafh/Afonso_1.png">
-                D. Afonso Henriques
-                @Html.RadioButtonFor(model => model.avatar, "D. Afonso Henriques") 
-
-            </div>
-            <div class="radioButtonAvatar">
-                <img src="~/Assets/sprites/ldc/camoes_1.png">
-                Luís de Camões
-                @Html.RadioButtonFor(model => model.avatar, "Luis de Camoes")
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.tema_Ambiente, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="radioButtonTema">
-                <img src="~/Assets/Backgrounds_ops/gmr.jpg" height="108" width="276">
-                Guimarães
-                @Html.RadioButtonFor(model => model.tema_Ambiente, "guimaraes")
-            </div>
-            <div class="radioButtonTema">
-                <img src="~/Assets/Backgrounds_ops/25ABR74.jpg" height="105" width="168">
-                25 de Abril
-                @Html.RadioButtonFor(model => model.tema_Ambiente, "25 de Abril")
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Registar" class="btn btn-default" />
+            <div class="btn-group-lg text-center">
+                <input type="submit" value="Registar" class="btn btn-group-lg" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    </div>
+    <hr/>
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<style>
+    .radioButtonAvatar {
+        display:inline-block;
+
+    }
+
+    .radioButtonGroup {
+  display: inline-block;
+  text-align: center;
+}
+.radioButtonGroup label {
+  display: block;
+}
+
+    .radioButtonGroup label img {
+        border : 2px solid black;
+    }
+
+        .radioButtonGroup .labelAvatar img {
+             width:50%;
+             height:50%;
+
+        }
+    .hidden {
+        display:none;
+    }
+</style>

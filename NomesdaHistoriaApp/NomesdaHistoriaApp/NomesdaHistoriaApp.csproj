@@ -107,6 +107,7 @@
     <Content Include="ClassDiagram2.cd" />
     <Content Include="ClassDiagram3.cd" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Css_changers.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -160,6 +161,7 @@
     <Content Include="Views\Aula\_LoadMedia.cshtml" />
     <Content Include="Views\Aula\NoApresentacoesAction.cshtml" />
     <Content Include="Views\Personagen\MostraTutor.cshtml" />
+    <Content Include="Views\Shared\_LayoutWithBar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

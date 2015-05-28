@@ -99,7 +99,7 @@ namespace NomesdaHistoriaApp.Controllers
                         FormsAuthentication.SetAuthCookie(user.username, true);
                         Session["userID"] = user.username;
                         Session["points"] = user.pontos;
-                        Session["userAmb"] = "../" + new AmbientedeAulaDBContext().AmbientesDeAula.Find(user.tema_Ambiente).PATH;
+                        Session["userAmb"] =  "../" + new AmbientedeAulaDBContext().AmbientesDeAula.Find(user.tema_Ambiente).PATH;
                         return RedirectToAction("Index", "Home");
                     }
 
