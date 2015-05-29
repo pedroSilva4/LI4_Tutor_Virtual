@@ -24,10 +24,26 @@
         // set effect from select menu value
         $("#mytutor").click(function () {
             runEffect();
+           
+                if ($("#click_me").css("display") == 'none')
+                    $("#click_me").show();
+                else {
+                    $("#click_me").hide();
+                }
+            
         });
 
         $("#effect").hide();
         $("#talkingBalloon").hide();
+        $("#click_me").show();
+        
+        $(document).ready(function () {
+            console.log("ready!");
+            window.setTimeout(function () {
+                $("#carrega").get(0).play();
+            }, 1500);
+            
+        });
     });
 
     $(function () {
@@ -38,7 +54,7 @@
         $("#talkingBalloon").empty();
         $("#talkingBalloon").append("<p>"+msg+"</p>");
         $("#talkingBalloon").show();
-        $("#" + cod).append('<source src="' + path + '" type="audio/mp3" >');
+        $("#" + cod).append('<source src="' + path + '" type="audio/wav" >');
         $("#"+cod).get(0).play();
 
     };
@@ -47,6 +63,7 @@
     function onEnd() {
         $("#talkingBalloon").hide();
         $("#effect").toggle("clip", {}, 500);
+        $("#click_me").toggle("clip", {},500);
         
         //alert("The audio has ended");
     };
@@ -61,7 +78,7 @@
                     var i = 0;
                     <li>
                         <span class="glyphicon-floppy-open glyphicon"></span>@key
-                        <ul>
+                        <ul class="helps">
                             @foreach (NomesdaHistoriaApp.Models.Ajudas aj in Model.DicionariodeAjudas[key])
                             {
                                 i++;
@@ -70,13 +87,48 @@
                                     <audio id="@aj.cod" onended="onEnd()" hidden></audio>
                                 </li>
                             }
+                           
                         </ul>
                     </li>
                 }
+                <li>
+                    <div onclick="help('Apresentação','ap1','/Assets/intros/dafh/intro3.wav')">Apresentação</div>
+                    <audio id="ap1" onended="onEnd()" hidden></audio>
+                </li>
             </ul>
             </div>
         </div>
+        
         <img class="tutor-image" src="~/@Model.sprite" id="mytutor">
-    <blockquote class="oval-speech-border" id="talkingBalloon"></blockquote>
+        <blockquote class="oval-speech-border" id="talkingBalloon"></blockquote>
+    <div id="click_me" class="container click_me text-center">
+        <img src="~/Assets/click_me.png">
+       <h4>Clica em mim!</h4>
+        <audio hidden id="carrega">
+            <source src="~/Assets/intros/clicaEmMimMale.wav" type="audio/wav">
+        </audio>
+    </div>
+    
     
 </div>
+
+<style>
+    .helps {
+        overflow: hidden;
+        overflow-y: scroll;
+        height: 400px;
+    }
+
+    .click_me {
+        display:block;
+        vertical-align:central;
+        margin-top : -50px;
+        
+       
+    }
+
+        .click_me img {
+             width:50px;
+             height:50px;
+        }
+</style>
