@@ -17,16 +17,16 @@ namespace NomesdaHistoriaApp.Models
             /*
              * calculo dos pesos das percentagens das aulas
              */
-            float videoPa = (float) (a.videoAprov / a.videoVis);
-            float audioPa = (float) (a.audioAprov / a.audioVis);
-            float imgPa = (float)(a.imagemAprov / a.imagemVis);
+            float videoPa = ((float)a.videoAprov / (float)a.videoVis);
+            float audioPa = ((float)a.audioAprov / (float)a.audioVis);
+            float imgPa = ((float)a.imagemAprov / (float)a.imagemVis);
 
             /*
             * calculo dos pesos das percentagens dos utlizadores
             */
-            float videoPu = (float)(u.videoAprovado / u.videoVis);
-            float audioPu = (float)(u.audioAprovado / u.audioVis);
-            float imgPu = (float)(u.imagemAprovado / u.imagemVis);
+            float videoPu = ((float)u.videoAprovado / (float)u.videoVis);
+            float audioPu = ((float)u.audioAprovado / (float)u.audioVis);
+            float imgPu = ((float)u.imagemAprovado / (float)u.imagemVis);
 
             /*
              * multiplicar pesos

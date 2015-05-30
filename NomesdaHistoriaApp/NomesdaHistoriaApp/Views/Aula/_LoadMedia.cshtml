@@ -3,112 +3,146 @@
 
 
 
-@if (Model.tipo == "video")
+<div id="Apresentacao" style="text-align:center">
 
-//HELP https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
-
-    //Problema: o video nao dá para reproduzir novamente!    
-    
-{
-    <video id="videoAula" controls>
-        <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mp4">
-        <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/ogg">
-        <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mpeg">
-        <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/3gpp">
-        <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/webm">
-    </video>
-
-    <div id="avButton">
-        @Html.ActionLink("Avaliação", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary", @id = "avaliacaoButton", @style = "display:none" })
+    <div id="avButton" style="align-content:center">
+        @Html.ActionLink("Avaliação", "avaliar", "Avaliacao", new { username = Session["userID"], codAula = Session["aulaId"], codApr = Model.cod, tipo = Model.tipo }, new { @class = "btn btn-default text-primary", @id = "avaliacaoButton", style = "display:none" })
     </div>
 
+    @if (Model.tipo == "video")
 
-    //<input type="button" value="Create" onclick="location.href='@Url.Action("Avaliação", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary" })'" />
-}
+    ////HELP https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Using_HTML5_audio_and_video
 
-@if (Model.tipo == "audio") {
+    //Problema: o video nao dá para reproduzir novamente! -> Base de dados???
+    {
+        <video id="videoAula" controls>
+            <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mp4">
+            <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/ogg">
+            <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/mpeg">
+            <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/3gpp">
+            <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="video/webm">
+        </video>
+
+
+    }
+
+
+    @if (Model.tipo == "audio")
+    {
 
 
 
-}
+    }
 
-@if (Model.tipo == "imagem")
-{
-    <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
 
-        @{
-            var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia.ToList(), Apid = Model.cod });
-            int i = 0;
-            int size = arr.ToString().Split('+').Length - 1;
 
-        }
 
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            @for (int k = 1; k < size; k++)
-            {
-                <li data-target="#myCarousel" data-slide-to="@k"></li>
-            }
-        </ol>
+    @*http://bootsnipp.com/snippets/featured/bootstrap-carousel-with-text*@
 
-        <div class="carousel-inner" role="listbox">
+    @if (Model.tipo == "imagem")
+    {
 
-           
-            
-            @foreach (String s in (arr.ToString()).Split('+'))
-            {
-                if (s != null && s != "")
-                {
-                    if (@i == 0)
-                    {
+        <div class="container">
+            <div class="row">
 
-                        <div class="item active">
-                            <img src="@s.Split(';')[0]" alt="" height="300" width="500" />
-                            <div class="carousel-text"> @s.Split(';')[1] </div>
-                        </div>
-                        i++;
+                <div id="myCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+
+                    @{
+        var arr = Html.Action("GetImages", new { multimedia = Model.Multimedia.ToList(), Apid = Model.cod });
+        int i = 0;
+        int size = arr.ToString().Split('+').Length - 1;
+
                     }
-                    else
-                    {
-                        <div class="item">
-                            <img src="@s.Split(';')[0]" alt="" height="300" width="500" />
-                            <div class="carousel-text"> @s.Split(';')[1] </div>
-                        </div>
-                    }
-                }
-            }
 
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        @for (int k = 1; k < size; k++)
+                        {
+                            <li data-target="#myCarousel" data-slide-to="@k"></li>
+                        }
+                    </ol>
+
+                    <div class="carousel-inner">
+
+                        @foreach (String s in (arr.ToString()).Split('+'))
+                        {
+                            if (s != null && s != "")
+                            {
+                                if (@i == 0)
+                                {
+
+                                    <div class="item active">
+
+                                        <img src="@s.Split(';')[0]" alt="" height="300" width="500">
+                                        <div class="carousel-text"> @s.Split(';')[1] </div>
+                                    </div>
+                                    i++;
+                                }
+                                else if (@i == size - 1)
+                                {
+                                    <div class="item">
+
+                                        @*//botao aqui*@
+                                        <img src="@s.Split(';')[0]" alt="" height="300" width="500">
+
+
+
+
+                                        <div class="carousel-text"> @s.Split(';')[1] </div>
+                                    </div>
+                                    i++;
+                                }
+                                else
+                                {
+                                    <div class="item">
+                                        <img src="@s.Split(';')[0]" alt="" height="300" width="500" />
+                                        <div class="carousel-text"> @s.Split(';')[1] </div>
+                                    </div>
+                                    i++;
+                                }
+                            }
+                        }
+
+                    </div>
+
+
+                    <p></p>
+
+                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </a>
+
+
+                </div>
+
+            </div>
         </div>
+    }
 
-        <p></p>
-
-        <div id="avButton">
-            @Html.ActionLink("Avaliação", "Login", "Home", new { area = "" }, new { @class = "btn btn-default text-primary", @id = "avaliacaoButton", @style = "display:none" })
-        </div>
-
-        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        </a>
+</div>
 
 
-    </div>
+
+
+
 
 
 
 
 <script>
+    var flag = false;
     var $myCarousel = $('#myCarousel');
     var $myCarouselControls = $myCarousel.find('.carousel-control');
     var $myCarouselControlsLeft = $myCarouselControls.filter('.left');
     var $myCarouselControlsRight = $myCarouselControls.filter('.right');
     var $myCarouselIndicators = $myCarousel.find('.carousel-indicators li');
     $myCarousel.carousel({
-        interval:false
+        interval: false
     });
-    //$myCarousel.carousel('pause');
+    $myCarousel.carousel('pause');
     $myCarouselControlsLeft.hide();
     var slideCount = $myCarouselIndicators.length;
     $myCarousel.on('slid.bs.carousel', function () {
@@ -120,20 +154,19 @@
             $myCarouselControlsLeft.show();
             $myCarouselControlsRight.hide();
             $("#avaliacaoButton").show();
-     //       $myCarousel.carousel('pause');
+            //       $myCarousel.carousel('pause');
         } else { // is not first or last slide
-            //para voltar a esconder o botao para a avaliacao 
-            //$("#avaliacaoButton").hide();
+            //para voltar a esconder o botao para a avaliacao
+            $("#avaliacaoButton").hide();
             $myCarouselControls.show();
         }
     })
 
 </script>
 
-}
 
 
-<script>       
+<script>
     //quando estiver o audio a funcionar
     var audio = document.getElementById("audioAula");
     audio.onended = function () {
@@ -152,20 +185,33 @@
 
 
 <style>
-    .carousel {
-    width: 500px;
-    height: 400px;    
-    vertical-align : central;
-    margin: 20px;
+    /*.carousel-inner > .item > img {
+                }*/
 
+    .carousel {
+        align-content: center;
+        width: 600px;
+        height: 550px;
+        vertical-align: central;
+        margin: 0 auto;
     }
+
     .carousel-control.left, .carousel-control.right {
-        background-image : none;
+        background-image: none;
+    }
+
+
+    .carousel-inner > .item > img {
+        margin: 0 auto;
+        width: 600px;
+        height: 380px;
     }
 
     .carousel-text {
         text-align: center;
-        font-family : Rockwell;
-        font-size : 18px;
+        font-family: Rockwell;
+        font-size: 18px;
+        color: #fff;
+        background-color: #000;
     }
 </style>

@@ -69,15 +69,15 @@ namespace NomesdaHistoriaApp.Models
                     {
                         if (apAnterior != ap.cod)
                         {
-                            pesos.Add(ap.cod, (float)(ap.aprovacoes / ap.visualizacoes));
-                            totalp += (float)(ap.aprovacoes / ap.visualizacoes);
+                            pesos.Add(ap.cod, ((float)ap.aprovacoes / (float)ap.visualizacoes));
+                            totalp += ((float)ap.aprovacoes / (float)ap.visualizacoes);
                         }
                     }
                 }
 
                 opt = rnd.Next(1, 100);
                 int apid = -1;
-                float prev = 0;
+                float prev = 0.0f;
                 foreach (int i in pesos.Keys)
                 {
                     float p = pesos[i];

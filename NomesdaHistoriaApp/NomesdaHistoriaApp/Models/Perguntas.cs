@@ -8,6 +8,43 @@ namespace NomesdaHistoriaApp.Models
 
     public partial class Perguntas
     {
+        //a proxima resposta a sair pelo metodo getNextAnswer
+        public int nextAnswer; //1,2,3,4(certa)
+        public int firstAnser;
+
+        public string getNextAnswer()
+        {
+            if (nextAnswer == 1)
+            {
+                if (nextAnswer == 4) nextAnswer = 1;
+                else nextAnswer++;
+                return errada1;
+            }
+            if (nextAnswer == 2)
+            {
+                if (nextAnswer == 4) nextAnswer = 1;
+                else nextAnswer++;
+                return errada2;
+            }
+            if (nextAnswer == 3)
+            {
+                if (nextAnswer == 4) nextAnswer = 1;
+                else nextAnswer++;
+                return errada3;
+            }
+
+            if (nextAnswer == 4) nextAnswer = 1;
+            else nextAnswer++;
+            return resposta;
+        }
+
+        public void randQuestions()
+        {
+            Random rnd = new Random();
+            this.nextAnswer = rnd.Next(1, 4);
+            this.firstAnser = this.nextAnswer;
+        }
+
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

@@ -32,7 +32,9 @@ namespace NomesdaHistoriaApp.Controllers
 
             NomesdaHistoriaApp.Models.Aulas.AulaViewModel al = aula.gerarAula(stat,(int)Session["aulaAP"]);
 
+            Session["aulaId"] = aula.cod;
             Session["aulaAP"] = al.apresentacao.cod;
+            Session["tituloAula"] = al.titulo;
 
             return View(al);
         }

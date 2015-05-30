@@ -121,6 +121,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AulaController.cs" />
+    <Compile Include="Controllers\AvaliacaoController.cs" />
     <Compile Include="Controllers\PersonagenController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -130,6 +131,7 @@
     <Compile Include="Models\AmbientesDeAula.cs" />
     <Compile Include="Models\Apresentacoes.cs" />
     <Compile Include="Models\Aulas.cs" />
+    <Compile Include="Models\AvaliacaoViewModel.cs" />
     <Compile Include="Models\DataContexts\AmbientedeAulaDBContext.cs" />
     <Compile Include="Models\DataContexts\AulasDbContext.cs" />
     <Compile Include="Models\Avaliacoes.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Models\Multimedia.cs" />
     <Compile Include="Models\Perguntas.cs" />
     <Compile Include="Models\DataContexts\PerosnagensDBContext.cs" />
+    <Compile Include="Models\PerguntaViewModel.cs" />
     <Compile Include="Models\Personagen.cs" />
     <Compile Include="Models\Utilizadores.cs" />
     <Compile Include="Models\DataContexts\UtilizadoresDBcontext.cs" />
@@ -162,6 +165,7 @@
     <Content Include="Views\Aula\NoApresentacoesAction.cshtml" />
     <Content Include="Views\Personagen\MostraTutor.cshtml" />
     <Content Include="Views\Shared\_LayoutWithBar.cshtml" />
+    <Content Include="Views\Avaliacao\avaliar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
