@@ -56,7 +56,7 @@
         $("#talkingBalloon").empty();
         $("#talkingBalloon").append("<p>"+msg+"</p>");
         $("#talkingBalloon").show();
-        $("#" + cod).append('<source src=.."' + path + '" type="audio/wav" >');
+        $("#" + cod).append('<source src="../' + path + '" type="audio/wav" >');
         $("#"+cod).get(0).play();
 
     };

@@ -6,9 +6,9 @@
 }
 
 
-<div class="containerCards">
+<div class="containerCards" id="tutor">
     <div class="card tutor">
-        @Html.Action("MostraTutor", "Personagen", "Personagen/MostraTutor")
+        @Html.Action("MostraTutorAula", "Personagen", new { cod = Model.codAula })
     </div>
 </div>
 
@@ -88,6 +88,7 @@
         $('#divStartGame').hide();
         $('#Tipo').show();
         $('#Pontos').show();
+        $("#tutor").hide();
     }
 
     function questionEnd(){
@@ -98,6 +99,7 @@
             $("#idProxima").hide();
             $("#idConfirmar").hide();
             $("#idFim").show();
+            $("#tutor").show();
         }
 
         document.getElementById("idConfirmar").disabled = true;

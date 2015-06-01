@@ -157,6 +157,35 @@ namespace NomesdaHistoriaApp.Controllers
                 av.pontos = pontos;
                 db.Avaliacoes.Add(av);
                 db.SaveChanges();
+
+                //verifica se já fez todas as conquistas
+                String personagem = aula.personagem, passa;
+                int totalAulas=0, avs=0;
+
+                foreach (Aulas au in db.Aulas)
+                {
+                    if(au.personagem.Equals(personagem))
+                        totalAulas++;
+                }
+
+                foreach (Avaliacoes a in db.Avaliacoes)
+                {
+                    if(db.Aulas.Find(a.aula).personagem.Equals(personagem))
+                        avs++;
+                }
+
+                if (avs == totalAulas)
+                {
+                    Conquistas nova = new Conquistas();
+                    nova.personagem = personagem;
+                    nova.username = username;
+
+                    db.Conquistas.Add(nova);
+                    db.SaveChanges();
+                }
+
+
+
             }
 
             //grava alterações de pontos
