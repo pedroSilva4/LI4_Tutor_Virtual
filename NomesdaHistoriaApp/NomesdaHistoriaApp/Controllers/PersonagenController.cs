@@ -65,5 +65,29 @@ namespace NomesdaHistoriaApp.Controllers
             
             return View(pvm);   
         }
+
+        public ActionResult AvaliacaoPassed() {
+            
+            UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
+            String avatar = usersDB.Utilizadores.Find(Session["userID"]).avatar;
+            PerosnagensDBContext personagensDB = new PerosnagensDBContext();
+            Personagen p = personagensDB.Personagens.Find(avatar);
+            PersonagemViewModel pvm = new PersonagemViewModel();
+            pvm.sprite = p.sprite+"Correto.png";
+
+            return View(pvm);
+        }
+
+        public ActionResult AvaliacaoReproved() { 
+
+            UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
+            String avatar = usersDB.Utilizadores.Find(Session["userID"]).avatar;
+            PerosnagensDBContext personagensDB = new PerosnagensDBContext();
+            Personagen p = personagensDB.Personagens.Find(avatar);
+            PersonagemViewModel pvm = new PersonagemViewModel();
+            pvm.sprite = p.sprite + "Errado.png";
+
+            return View(pvm);
+        }
     }
 }

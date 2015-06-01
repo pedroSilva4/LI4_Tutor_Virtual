@@ -167,6 +167,8 @@
     <Content Include="Views\Shared\_LayoutWithBar.cshtml" />
     <Content Include="Views\Avaliacao\avaliar.cshtml" />
     <Content Include="Views\Personagen\MostraTutorAula.cshtml" />
+    <Content Include="Views\Personagen\AvaliacaoReproved.cshtml" />
+    <Content Include="Views\Personagen\AvaliacaoPassed.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
