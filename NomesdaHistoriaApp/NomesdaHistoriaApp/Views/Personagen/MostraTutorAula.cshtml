@@ -1,0 +1,131 @@
+﻿@model NomesdaHistoriaApp.Models.PersonagemViewModel
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script>
+    $(function () {
+        // run the currently selected effect
+        function runEffect() {
+            // get effect type from
+            var selectedEffect = "clip";
+
+            // most effect types need no options passed by default
+            var options = {};
+            // some effects have required parameters
+            if (selectedEffect === "scale") {
+                options = { percent: 100 };
+            } else if (selectedEffect === "size") {
+                options = { to: { width: 280, height: 185 } };
+            }
+
+            // run the effect
+            $("#effect").toggle(selectedEffect, options, 500);
+        };
+
+
+        // set effect from select menu value
+        $("#mytutor").click(function () {
+            runEffect();
+
+                if ($("#click_me").css("display") == 'none')
+                    $("#click_me").show();
+                else {
+                    $("#click_me").hide();
+                }
+
+        });
+
+        $("#effect").hide();
+        $("#talkingBalloon").hide();
+        $("#click_me").show();
+
+        $(document).ready(function () {
+            console.log("ready!");
+            window.setTimeout(function () {
+                $("#carrega").get(0).play();
+            }, 1500);
+
+        });
+    });
+
+    $(function () {
+        $("#menu").menu();
+    });
+
+    function help(msg,cod,path) {
+        $("#talkingBalloon").empty();
+        $("#talkingBalloon").append("<p>"+msg+"</p>");
+        $("#talkingBalloon").show();
+        $("#" + cod).append('<source src=.."' + path + '" type="audio/wav" >');
+        $("#"+cod).get(0).play();
+
+    };
+
+
+    function onEnd() {
+        $("#talkingBalloon").hide();
+        $("#effect").toggle("clip", {}, 500);
+        $("#click_me").toggle("clip", {},500);
+
+        //alert("The audio has ended");
+    };
+</script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<div id="tutor-container">
+    <div class="opts">
+        <div id="effect">
+            <ul id="menu">
+                @foreach (String key in Model.DicionariodeAjudas.Keys)
+                {
+                    var i = 0;
+                    <li>
+                        <span class="glyphicon-floppy-open glyphicon"></span>@key
+                        <ul class="helps">
+                            @foreach (NomesdaHistoriaApp.Models.Ajudas aj in Model.DicionariodeAjudas[key])
+                            {
+                                i++;
+                                <li>
+                                    <div onclick="help('@aj.ajuda','@aj.cod','@aj.audio')">@aj.topico</div>
+                                    <audio id="@aj.cod" onended="onEnd()" hidden></audio>
+                                </li>
+                            }
+
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <img class="tutor-image" src="~/@Model.sprite" id="mytutor">
+    <blockquote class="oval-speech-border" id="talkingBalloon"></blockquote>
+    <div id="click_me" class="container click_me text-center">
+        <img src="~/Assets/click_me.png">
+        <h4>Clica em mim se tiveres duvidas!</h4>
+        <audio hidden id="carrega">
+            <source src="~/Assets/intros/clicaEmMimMale.wav" type="audio/wav">
+        </audio>
+    </div>
+
+
+</div>
+
+<style>
+    .helps {
+        overflow: hidden;
+        overflow-y: scroll;
+        max-height: 400px;
+    }
+
+    .click_me {
+        display: block;
+        vertical-align: central;
+        margin-top: -50px;
+    }
+
+        .click_me img {
+            width: 50px;
+            height: 50px;
+        }
+</style>
+

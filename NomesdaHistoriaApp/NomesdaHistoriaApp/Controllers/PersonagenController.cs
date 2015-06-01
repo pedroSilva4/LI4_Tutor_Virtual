@@ -42,5 +42,28 @@ namespace NomesdaHistoriaApp.Controllers
 
             return View(pvm);   
         }
+
+        public ActionResult MostraTutorAula(int cod) {
+            UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
+            String avatar = usersDB.Utilizadores.Find(Session["userID"]).avatar;
+            PerosnagensDBContext personagensDB = new PerosnagensDBContext();
+            Personagen p = personagensDB.Personagens.Find(avatar);
+
+            PersonagemViewModel pvm = new PersonagemViewModel();
+            pvm.nome = p.nome;
+            pvm.sprite = p.sprite;
+            pvm.etapa = p.etapa;
+
+            AulasDbContext aulasdb = new AulasDbContext();
+            pvm.DicionariodeAjudas = new Dictionary<String, List<Ajudas>>();
+            List<Ajudas> ajudas = new List<Ajudas>();
+            Aulas al = aulasdb.Aulas.Find(cod);
+            String key = al.titulo;
+            ajudas.AddRange(al.Ajudas);
+                
+                pvm.DicionariodeAjudas.Add(key, ajudas);
+            
+            return View(pvm);   
+        }
     }
 }
