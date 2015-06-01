@@ -77,9 +77,8 @@ namespace NomesdaHistoriaApp.Controllers
             //incrementa visualização na apresentação
             apr.visualizacoes++;
 
-
             String res;
-            //Para passar tem que ter pelo menos 45 Pontos
+            //Para passar tem que ter pelo menos 40 Pontos
 
             if (pontos < 10)
             {
@@ -118,7 +117,7 @@ namespace NomesdaHistoriaApp.Controllers
             userDB.Entry(user).State = EntityState.Modified;
             userDB.SaveChanges();
 
-            if (res.Equals("repovado"))
+            if (res.Equals("reprovado"))
                 return Json(res, JsonRequestBehavior.AllowGet);
 
             //verifica se o user já tem uma avalicao positiva para esta aula
@@ -128,10 +127,16 @@ namespace NomesdaHistoriaApp.Controllers
                 //se a melhoria for melhor, atualiza
                 if (pontos > avAnt.pontos)
                 {
+                    //atuliza pontos
+                    int maisPontos = pontos - avAnt.pontos;
+                    user.pontos += maisPontos;
+                    Session["points"] = user.pontos;
+
                     avAnt.pontos = pontos;
                     avAnt.tipo = tipo;
                     db.Entry(avAnt).State = EntityState.Modified;
                     db.SaveChanges();
+
                 }
                 else
                 {
@@ -141,6 +146,10 @@ namespace NomesdaHistoriaApp.Controllers
             }
             else
             {
+                //insere pontos
+                user.pontos += pontos;
+                Session["points"] = user.pontos;
+
                 Avaliacoes av = new Avaliacoes();
                 av.aula = codAula;
                 av.username = username;
@@ -148,7 +157,40 @@ namespace NomesdaHistoriaApp.Controllers
                 av.pontos = pontos;
                 db.Avaliacoes.Add(av);
                 db.SaveChanges();
+
+                //verifica se já fez todas as conquistas
+                String personagem = aula.personagem, passa;
+                int totalAulas=0, avs=0;
+
+                foreach (Aulas au in db.Aulas)
+                {
+                    if(au.personagem.Equals(personagem))
+                        totalAulas++;
+                }
+
+                foreach (Avaliacoes a in db.Avaliacoes)
+                {
+                    if(db.Aulas.Find(a.aula).personagem.Equals(personagem))
+                        avs++;
+                }
+
+                if (avs == totalAulas)
+                {
+                    Conquistas nova = new Conquistas();
+                    nova.personagem = personagem;
+                    nova.username = username;
+
+                    db.Conquistas.Add(nova);
+                    db.SaveChanges();
+                }
+
+
+
             }
+
+            //grava alterações de pontos
+            userDB.Entry(user).State = EntityState.Modified;
+            userDB.SaveChanges();
 
             return Json(res, JsonRequestBehavior.AllowGet);
         }

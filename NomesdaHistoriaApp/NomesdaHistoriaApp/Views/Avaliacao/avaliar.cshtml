@@ -6,6 +6,12 @@
 }
 
 
+<div class="containerCards" id="tutor">
+    <div class="card tutor">
+        @Html.Action("MostraTutorAula", "Personagen", new { cod = Model.codAula })
+    </div>
+</div>
+
 <div style="text-align:center;" id="divStartGame">
     <p></p>
     <button type="button" style="height:90px; width:200px; text-align:center" class="btn-info" onclick="startGame()"> Iniciar a Avaliação </button>
@@ -82,6 +88,7 @@
         $('#divStartGame').hide();
         $('#Tipo').show();
         $('#Pontos').show();
+        $("#tutor").hide();
     }
 
     function questionEnd(){
@@ -92,6 +99,7 @@
             $("#idProxima").hide();
             $("#idConfirmar").hide();
             $("#idFim").show();
+            $("#tutor").show();
         }
 
         document.getElementById("idConfirmar").disabled = true;
