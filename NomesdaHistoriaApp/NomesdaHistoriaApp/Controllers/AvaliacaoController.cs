@@ -78,9 +78,8 @@ namespace NomesdaHistoriaApp.Controllers
             apr.visualizacoes++;
 
             String res;
-            //Para passar tem que ter pelo menos 40 Pontos
 
-            if (pontos < 10)
+            if (pontos < 40)
             {
                 res = "reprovado";
             }
@@ -183,8 +182,6 @@ namespace NomesdaHistoriaApp.Controllers
                     db.Conquistas.Add(nova);
                     db.SaveChanges();
                 }
-
-
 
             }
 

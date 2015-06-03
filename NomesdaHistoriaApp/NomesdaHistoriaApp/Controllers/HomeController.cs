@@ -173,19 +173,74 @@ namespace NomesdaHistoriaApp.Controllers
         /*
          * fazer os detalhes do utilizador, mudar settings e assim
          */
+        //public ActionResult Details()
+        //{
+        //    String user = Session["userId"].ToString();
+        //    UtilizadoresDBcontext userDB = new UtilizadoresDBcontext();
+        //    Dictionary<String, int> statistics = new Dictionary<string, int>();
+        //    statistics.Add("Visualizações video", (int)userDB.Utilizadores.Find(user).videoVis);
+        //    statistics.Add("Aprovações video", (int)userDB.Utilizadores.Find(user).videoAprovado);
+        //    statistics.Add("Visualizações audio", (int)userDB.Utilizadores.Find(user).audioVis);
+        //    statistics.Add("aprovações audio", (int)userDB.Utilizadores.Find(user).audioAprovado);
+        //    statistics.Add("Visualizações imagem", (int)userDB.Utilizadores.Find(user).imagemVis);
+        //    statistics.Add("aprovações imagem", (int)userDB.Utilizadores.Find(user).imagemAprovado);
+        //    statistics.Add("pontuação", (int)userDB.Utilizadores.Find(user).pontos);
+        //    return View(statistics);
+        //}
+
         public ActionResult Details()
         {
-            String user = Session["userId"].ToString();
+            PagPessoalViewModel model = new PagPessoalViewModel();
             UtilizadoresDBcontext userDB = new UtilizadoresDBcontext();
-            Dictionary<String, int> statistics = new Dictionary<string, int>();
-            statistics.Add("Visualizações video", (int)userDB.Utilizadores.Find(user).videoVis);
-            statistics.Add("Aprovações video", (int)userDB.Utilizadores.Find(user).videoAprovado);
-            statistics.Add("Visualizações audio", (int)userDB.Utilizadores.Find(user).audioVis);
-            statistics.Add("aprovações audio", (int)userDB.Utilizadores.Find(user).audioAprovado);
-            statistics.Add("Visualizações imagem", (int)userDB.Utilizadores.Find(user).imagemVis);
-            statistics.Add("aprovações imagem", (int)userDB.Utilizadores.Find(user).imagemAprovado);
-            statistics.Add("pontuação", (int)userDB.Utilizadores.Find(user).pontos);
-            return View(statistics);
+            AulasDbContext aulasDB = new AulasDbContext();
+            PerosnagensDBContext personagensDB = new PerosnagensDBContext();
+
+            String username = (String)Session["userId"];
+            model.user = userDB.Utilizadores.Find(Session["userId"]);
+
+            List<Conquistas> conq = new List<Conquistas>();
+            int totalConq =0;
+
+            foreach(Conquistas c in aulasDB.Conquistas.Where(c => c.username.Equals(username))){
+                    conq.Add(c);
+                    totalConq++;
+            }
+
+            List<Personagen> conquistas = new List<Personagen>();
+            Boolean hasConq = false;
+            foreach (Personagen p in personagensDB.Personagens)
+            {
+                foreach (Conquistas c in conq.Where(c => c.personagem == p.nome))
+                {
+                        conquistas.Add(p);
+                        hasConq = true;
+                }
+            }
+            if(hasConq)
+                model.conquistas = conquistas;
+
+            Personagen emC = null;
+            foreach(Personagen p in personagensDB.Personagens){
+                if(p.etapa == totalConq +1)
+                    emC = p;
+            }
+
+            List<Aulas> aulasAux = new List<Aulas>();
+            foreach (Aulas a in aulasDB.Aulas.Where(a => a.personagem == emC.nome))
+            {
+                aulasAux.Add(a);
+                model.emConquistaAulas++;
+            }
+
+            foreach (Avaliacoes av in aulasDB.Avaliacoes)
+            {
+                foreach (Aulas a in aulasAux.Where(a => a.cod == av.aula))
+                    model.emConquistasAprovado++;
+            }
+
+            model.emConquista = emC;
+
+            return View(model);
         }
 
         public ActionResult Logout()

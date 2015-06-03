@@ -66,3 +66,4 @@ C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\Nom
 C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\bin\System.Web.Mvc.xml
 C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.dll
 C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.pdb
+C:\Users\Carlos Morais\Documents\GitHub\LI4_Tutor_Virtual\NomesdaHistoriaApp\NomesdaHistoriaApp\obj\Debug\NomesdaHistoriaApp.csprojResolveAssemblyReference.cache

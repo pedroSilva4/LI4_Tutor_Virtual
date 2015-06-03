@@ -136,6 +136,7 @@
     <Compile Include="Models\DataContexts\AulasDbContext.cs" />
     <Compile Include="Models\Avaliacoes.cs" />
     <Compile Include="Models\Conquistas.cs" />
+    <Compile Include="Models\PagPessoalViewModel.cs" />
     <Compile Include="Models\Estatistica.cs" />
     <Compile Include="Models\Multimedia.cs" />
     <Compile Include="Models\Perguntas.cs" />
@@ -169,6 +170,8 @@
     <Content Include="Views\Personagen\MostraTutorAula.cshtml" />
     <Content Include="Views\Personagen\AvaliacaoReproved.cshtml" />
     <Content Include="Views\Personagen\AvaliacaoPassed.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Home\_ConsultarRanking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

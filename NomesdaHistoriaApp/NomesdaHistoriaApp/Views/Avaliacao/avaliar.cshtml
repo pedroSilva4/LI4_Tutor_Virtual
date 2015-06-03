@@ -12,6 +12,8 @@
     </div>
 </div>
 
+
+
 <div style="text-align:center;" id="divStartGame">
     <p></p>
     <button type="button" style="height:90px; width:200px; text-align:center" class="btn-info" onclick="startGame()"> Iniciar a Avaliação </button>
@@ -46,11 +48,16 @@
 
 <div id="endAvaliacao" hidden="hidden" style="text-align:center">
 
-    <h1 id="ResultadoAv"></h1>
+    <div><h1 id="ResultadoAv" style="text-align:center"></h1></div>
 
-    @Html.ActionLink("Repetir Avaliação", "avaliar", "Avaliacao", new { username = Session["userID"], codAula = Model.codAula, codApr = Model.codApr, tipo = Model.tipo }, new { @class = "btn btn-default text-primary", @id = "Repetir Avaliacao", })<br/>
-    @Html.ActionLink("Repetir a Aula ", "../Aula/Index", new { titulo = Session["tituloAula"] }, new { @class = "btn btn-default text-primary" })<br/>
-    @Html.ActionLink("Voltar à Etapa", "Index", "Home", new { }, new { @class = "btn btn-default text-primary", @id = "Voltar à Etapa" })<br/>
+    <div>
+        <div class="containerCards" id="tutorResultado" style="text-align:left"></div>
+        <div style="display:inline-block" ;"text-align:center">
+            @Html.ActionLink("Repetir Avaliação", "avaliar", "Avaliacao", new { username = Session["userID"], codAula = Model.codAula, codApr = Model.codApr, tipo = Model.tipo }, new { @class = "btn btn-default text-primary", @id = "Repetir Avaliacao", })<br />
+            @Html.ActionLink("Repetir a Aula ", "../Aula/Index", new { titulo = Session["tituloAula"] }, new { @class = "btn btn-default text-primary" })<br />
+            @Html.ActionLink("Voltar à Etapa", "Index", "Home", new { }, new { @class = "btn btn-default text-primary", @id = "Voltar à Etapa" })<br />
+        </div>
+    </div>
 </div>
 
 
@@ -99,7 +106,7 @@
             $("#idProxima").hide();
             $("#idConfirmar").hide();
             $("#idFim").show();
-            $("#tutor").show();
+            $("#tutor").hide();
         }
 
         document.getElementById("idConfirmar").disabled = true;
@@ -151,8 +158,14 @@
             success: function (data) {
 
                 //#note fazer esta interação com o avatar
-                if(data=="aprovado")
+                if(data=="aprovado"){
                     document.getElementById("ResultadoAv").innerHTML = "Passaste à avaliação com "+pontos+" pontos... Parabéns!";
+                    $.get( '@Url.Action("AvaliacaoPassed", "Personagen")', function(data) {
+                        $('#tutorResultado').html(data);
+                    }); 
+                    
+                    //$('#tutorPassa').show();                    
+                }
                 if(data=="naoMelhoria")
                     document.getElementById("ResultadoAv").innerHTML = "Passaste à avaliação com "+pontos+" pontos, mas não conseguiste melhorar a tua pontuação";
                 if(data=="reprovado")

@@ -1,15 +1,31 @@
-﻿@model Dictionary<String,int>
-@{
+﻿@model Dictionary<string,int>
+
+    @{
     ViewBag.Title = "_ConsultarRanking";
-}
-
-<h2>Ranking Nacional</h2>
-
-<ul>
-    @foreach (var item in Model.Keys)
-    {
-        <li>
-            <h4> @item : @Model[item] pontos</h4>
-        </li>
+    int i = 1;
     }
-</ul>  
+
+<div style="text-align:center">
+    <h1>Ranking Nacional</h1>
+
+    <br></br>
+
+    <table align="center" style="width:30%;text-align:left">
+        <tr>
+            <th>Posição</th>
+            <th>Utilizador</th>
+            <th>Pontos</th>
+        </tr>
+
+        @foreach (var item in Model.Keys)
+        {
+            <tr>
+                <td>@i º</td>
+                <td>@item</td>
+                <td>@Model[item]</td>
+                @{i++;}
+            </tr>
+        }
+
+    </table>
+</div>

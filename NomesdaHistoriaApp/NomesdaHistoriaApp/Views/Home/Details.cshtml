@@ -1,14 +1,188 @@
-﻿@model Dictionary<String, int>
+﻿@model NomesdaHistoriaApp.Models.PagPessoalViewModel
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Estatisticas Pessoais</h2>
+<h1 style="text-align:center;color:#000033">Página Pessoal</h1>
 
-<ul>
-    @foreach (var item in Model.Keys)
-    {
-        <h4> @item : @Model[item]</h4>
-    }
-</ul> 
+<div id="user" style="text-align:center">
+    <p>@Model.user.username</p>
+    <p>@Model.user.pontos pontos</p>
+</div>
+
+@if (Model.emConquista != null)
+{
+    <div class="container" style="text-align:center">
+        <h3>Em Conquista</h3>
+        <img style="display:inline-block;margin:auto" src="../@Model.emConquista.sprite">
+        @if (Model.emConquistaAulas > 0) { 
+            <div id="emConquista" style="display:inline-block;margin:auto"></div>
+        }
+        </div>
+}
+
+@if (Model.conquistas != null)
+{
+    <div class="container" style="text-align:center">
+        <h3>Conquistas</h3>
+        @foreach (var item in Model.conquistas)
+        {
+            <img style="display:inline-block;margin:auto" src="../@item.sprite">
+        }
+    </div>
+}
+
+<style>
+#user {
+color: #00FFFF; 
+font-size: 16pt; 
+}
+    </style>
+
+
+
+@*NOTA: COLOCAR IF's AQUI PARA NÃO GERAR, QUADO NAO TEM VALORES!!*@
+
+
+<div class="container" style="text-align:center">
+<h2>Estatisticas de jogo</h2>
+    <div id="aprovacoesTipo" style="display:inline-block;margin:auto"></div>
+    <div id="sucessoImagem" style="display:inline-block;margin:auto"></div>
+    <div id="sucessoVideo" style="display:inline-block;margin:auto"></div>
+    <div id="sucessoAudio" style="display:inline-block;margin:auto"></div>
+</div>
+
+
+
+
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+        // Load the Visualization API and the piechart package.
+        google.load('visualization', '1.0', {'packages':['corechart']});
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.setOnLoadCallback(aprovacoesTipo);
+        google.setOnLoadCallback(sucessoImagem);
+        google.setOnLoadCallback(sucessoVideo);
+        google.setOnLoadCallback(sucessoAudio);
+        google.setOnLoadCallback(emConquista);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function aprovacoesTipo() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+              ['Videos', (@Model.user.videoAprovado)-1],
+              ['Audio', (@Model.user.audioAprovado)-1],
+              ['Imagem', (@Model.user.imagemAprovado)-1]
+            ]);
+
+            // Set chart options
+            var options = {backgroundColor: 'transparent',
+                'title':'Aprovações a cada tipo de aula',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('aprovacoesTipo'));
+            chart.draw(data, options);
+        }
+
+        function sucessoImagem() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+              ['Aprovado', (@Model.user.imagemAprovado)-1],
+              ['Reprovado', (@Model.user.imagemVis)-(@Model.user.imagemAprovado)]
+            ]);
+
+            // Set chart options
+            var options = {backgroundColor: 'transparent',
+                'title':'Sucesso de Imagem',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('sucessoImagem'));
+            chart.draw(data, options);
+        }
+
+        function sucessoVideo() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+              ['Aprovado', (@Model.user.videoAprovado)-1],
+              ['Reprovado', (@Model.user.videoVis)-(@Model.user.videoAprovado)]
+            ]);
+
+            // Set chart options
+            var options = {backgroundColor: 'transparent',
+                'title':'Sucesso de Video',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('sucessoVideo'));
+            chart.draw(data, options);
+        }
+
+        function sucessoAudio() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+              ['Aprovado', (@Model.user.audioAprovado)-1],
+              ['Reprovado', (@Model.user.audioVis)-(@Model.user.audioAprovado)]
+            ]);
+
+            // Set chart options
+            var options = {backgroundColor: 'transparent',
+                'title':'Sucesso de Audio',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('sucessoAudio'));
+            chart.draw(data, options);
+        }
+
+        function emConquista() {
+
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows([
+              ['Aprovações', (@Model.emConquistasAprovado)],
+              ['Por Avaliar', (@Model.emConquistaAulas)]
+            ]);
+
+            // Set chart options
+            var options = {backgroundColor: 'transparent',
+                'title':'Aprovações a cada tipo de aula',
+                'width':400,
+                'height':300};
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.PieChart(document.getElementById('emConquista'));
+            chart.draw(data, options);
+        }
+
+    </script>
+
+
 
