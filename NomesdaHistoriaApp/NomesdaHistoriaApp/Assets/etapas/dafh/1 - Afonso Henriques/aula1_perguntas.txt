@@ -1,4 +1,4 @@
-Q? -> 10 
+﻿Q? -> 10 
 
 Q:: Em que ano nasceu D. Afonso Henriques?
 R:. 1103
