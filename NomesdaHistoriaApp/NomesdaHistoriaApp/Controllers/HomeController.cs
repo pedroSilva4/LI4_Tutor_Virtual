@@ -232,7 +232,7 @@ namespace NomesdaHistoriaApp.Controllers
                 model.emConquistaAulas++;
             }
 
-            foreach (Avaliacoes av in aulasDB.Avaliacoes)
+            foreach (Avaliacoes av in aulasDB.Avaliacoes.Where(av => av.username.Equals(username)))
             {
                 foreach (Aulas a in aulasAux.Where(a => a.cod == av.aula))
                     model.emConquistasAprovado++;
