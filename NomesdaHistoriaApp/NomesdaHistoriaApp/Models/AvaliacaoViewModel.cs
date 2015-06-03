@@ -47,14 +47,30 @@ namespace NomesdaHistoriaApp.Models
             }
 
             ICollection<Perguntas> perguntas = aula.Perguntas;
-            int nQ = 0;
+            List<Perguntas> geradas = new List<Perguntas>();
+            List<int> list = new List<int>();
+            int totalP = perguntas.Count();
+            int nQ = 0, totalGeradas = 0;
 
-            //sort X Perguntas -> fazer aqui !!!
+            //sort 5 Perguntas -> fazer aqui 
+            Random rnd = new Random();
 
-            foreach (Perguntas item in perguntas)
+            while (totalGeradas < 5)
             {
-                item.randQuestions(); //a ordem das opções para resposta é "gerada" aqui
-                PerguntaViewModel pvm = new PerguntaViewModel(item.pergunta, item.errada1, item.errada2, item.errada3, item.resposta);
+                int next = rnd.Next(1, totalP);
+                if (!list.Contains(next))
+                {
+                    list.Add(next);
+                    geradas.Add(perguntas.ElementAt(next));
+                    totalGeradas++;
+                }
+            }
+
+
+            foreach (Perguntas item in geradas)
+            {
+                //item.randQuestions(); //a ordem das opções para resposta é "gerada" aqui
+                //PerguntaViewModel pvm = new PerguntaViewModel(item.pergunta, item.errada1, item.errada2, item.errada3, item.resposta);
                 this.ids[nQ] = item.cod;
                 nQ++;
             }

@@ -56,12 +56,15 @@ namespace NomesdaHistoriaApp.Models
 
             AulaViewModel aula = new AulaViewModel();
             aula.titulo = this.titulo;
+            
+
             while (aula.apresentacao == null)
             {
+                Dictionary<int, float> pesos = new Dictionary<int, float>();
                 Random rnd = new Random();
                 int opt = rnd.Next(1, 100);
                 String apType = wichmedia(opt, stats);
-                Dictionary<int, float> pesos = new Dictionary<int, float>();
+               
                 float totalp = 0.0f;
                 foreach (Apresentacoes ap in this.Apresentacoes)
                 {
@@ -78,19 +81,22 @@ namespace NomesdaHistoriaApp.Models
                 opt = rnd.Next(1, 100);
                 int apid = -1;
                 float prev = 0.0f;
-                foreach (int i in pesos.Keys)
-                {
-                    float p = pesos[i];
-                    pesos[i] = p / totalp;
+                    ICollection<int> keys = pesos.Keys;
 
-                    if (opt <= (pesos[i]) * 100 + prev)
+                    foreach (int i in keys)
                     {
-                        apid = i;
-                        break;
-                    }
+                        float p = pesos[i];
+                        float p1 = p / totalp;
 
-                    prev += pesos[i];
-                }
+                        if (opt <= (p1 * 100 + prev))
+                        {
+                            apid = i;
+                            break;
+                        }
+
+                        prev += p1*100;
+                    }
+       
 
 
                 aula.apresentacao = (from x in this.Apresentacoes where x.cod == apid select x).FirstOrDefault();

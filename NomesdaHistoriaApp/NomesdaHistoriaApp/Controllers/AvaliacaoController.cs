@@ -158,7 +158,7 @@ namespace NomesdaHistoriaApp.Controllers
                 db.SaveChanges();
 
                 //verifica se já fez todas as conquistas
-                String personagem = aula.personagem, passa;
+                String personagem = aula.personagem;
                 int totalAulas=0, avs=0;
 
                 foreach (Aulas au in db.Aulas)

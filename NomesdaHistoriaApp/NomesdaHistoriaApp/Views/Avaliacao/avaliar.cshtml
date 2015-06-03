@@ -70,12 +70,15 @@
     document.getElementById("idProxima").disabled = true;
     var questionCount = 0;
     var attempts=0;
-    var totalQuestions=2;
+    var totalQuestions=5;
     var pontos = 0;
 
     //#note arrays em javascript
     var id0 =  @(Model.updateQuestion());
     var id1 =  @(Model.updateQuestion());
+    var id2 =  @(Model.updateQuestion());
+    var id3 =  @(Model.updateQuestion());
+    var id4 =  @(Model.updateQuestion());
     var idCurrentQuestion;
 
     function atualizaId(){
@@ -83,130 +86,136 @@
             idCurrentQuestion = id0;
         if(questionCount==1)
             idCurrentQuestion = id1;
+        if(questionCount==2)
+            idCurrentQuestion = id2;
+        if(questionCount==3)
+            idCurrentQuestion = id3;
+        if(questionCount==4)
+            idCurrentQuestion = id4;
     }
 
-    function atualizaPontos(){
-        debugger;
-        document.getElementById("Pontos").innerHTML = "Pontos: "+pontos;
-    }
+        function atualizaPontos(){
+            debugger;
+            document.getElementById("Pontos").innerHTML = "Pontos: "+pontos;
+        }
 
-    function startGame() {
-        getNextQuestion();
-        $('#divStartGame').hide();
-        $('#Tipo').show();
-        $('#Pontos').show();
-        $("#tutor").hide();
-    }
-
-    function questionEnd(){
-        atualizaPontos();
-        lockAll();
-
-        if(questionCount == totalQuestions){
-            $("#idProxima").hide();
-            $("#idConfirmar").hide();
-            $("#idFim").show();
+        function startGame() {
+            getNextQuestion();
+            $('#divStartGame').hide();
+            $('#Tipo').show();
+            $('#Pontos').show();
             $("#tutor").hide();
         }
 
-        document.getElementById("idConfirmar").disabled = true;
-        document.getElementById("idProxima").disabled = false;
-    }
+        function questionEnd(){
+            atualizaPontos();
+            lockAll();
 
-    function getNextQuestion() {
-        document.getElementById("idConfirmar").disabled = false;
-        document.getElementById("idProxima").disabled = true;
-        atualizaId();
-        questionCount++;
-        attempts=0;
-        unlockAll();
-
-        $.ajax({
-            url: '@Url.Action("getQuestion", "Avaliacao")',
-            data: { "idQuestion": idCurrentQuestion },
-            type: 'GET',
-            success: function (data) {
-                $('#Pergunta').text(data.pergunta);
-                $('#Hipotese1').text(data.opt1);
-                $('#Hipotese2').text(data.opt2);
-                $('#Hipotese3').text(data.opt3);
-                $('#Hipotese4').text(data.opt4);
+            if(questionCount == totalQuestions){
+                $("#idProxima").hide();
+                $("#idConfirmar").hide();
+                $("#idFim").show();
+                $("#tutor").hide();
             }
-        });
-    }
 
-    function lockAll(){
-        $("#Resposta1").attr( 'disabled', true);
-        $("#Resposta2").attr( 'disabled', true);
-        $("#Resposta3").attr( 'disabled', true);
-        $("#Resposta4").attr( 'disabled', true);
-    }
+            document.getElementById("idConfirmar").disabled = true;
+            document.getElementById("idProxima").disabled = false;
+        }
 
-    function unlockAll(){
-        $("#Resposta1").removeAttr( "disabled" );
-        $("#Resposta2").removeAttr( "disabled" );
-        $("#Resposta3").removeAttr( "disabled" );
-        $("#Resposta4").removeAttr( "disabled" );
-    }
+        function getNextQuestion() {
+            document.getElementById("idConfirmar").disabled = false;
+            document.getElementById("idProxima").disabled = true;
+            atualizaId();
+            questionCount++;
+            attempts=0;
+            unlockAll();
+
+            $.ajax({
+                url: '@Url.Action("getQuestion", "Avaliacao")',
+                data: { "idQuestion": idCurrentQuestion },
+                type: 'GET',
+                success: function (data) {
+                    $('#Pergunta').text(data.pergunta);
+                    $('#Hipotese1').text(data.opt1);
+                    $('#Hipotese2').text(data.opt2);
+                    $('#Hipotese3').text(data.opt3);
+                    $('#Hipotese4').text(data.opt4);
+                }
+            });
+        }
+
+        function lockAll(){
+            $("#Resposta1").attr( 'disabled', true);
+            $("#Resposta2").attr( 'disabled', true);
+            $("#Resposta3").attr( 'disabled', true);
+            $("#Resposta4").attr( 'disabled', true);
+        }
+
+        function unlockAll(){
+            $("#Resposta1").removeAttr( "disabled" );
+            $("#Resposta2").removeAttr( "disabled" );
+            $("#Resposta3").removeAttr( "disabled" );
+            $("#Resposta4").removeAttr( "disabled" );
+        }
 
 
-    function enviaAvaliacao(){
-        $.ajax({
-            url: '@Url.Action("insereAvaliacao", "Avaliacao")',
-            data: { username: "@(Model.username)", codAula: @(Model.codAula), codApr : @(Model.codApr), tipo: "@(Model.tipo)", pontos: pontos },
-            type: 'GET',
-            success: function (data) {
+        function enviaAvaliacao(){
+            $.ajax({
+                url: '@Url.Action("insereAvaliacao", "Avaliacao")',
+                data: { username: "@(Model.username)", codAula: @(Model.codAula), codApr : @(Model.codApr), tipo: "@(Model.tipo)", pontos: pontos },
+                type: 'GET',
+                success: function (data) {
 
-                //#note fazer esta interação com o avatar
-                if(data=="aprovado"){
-                    document.getElementById("ResultadoAv").innerHTML = "Passaste à avaliação com "+pontos+" pontos... Parabéns!";
-                    $.get( '@Url.Action("AvaliacaoPassed", "Personagen")', function(data) {
+                    //#note fazer esta interação com o avatar (Falta o Audio)
+                    if(data=="aprovado"){
+                        document.getElementById("ResultadoAv").innerHTML = "Passaste à avaliação com "+pontos+" pontos... Parabéns!";
+                        $.get( '@Url.Action("AvaliacaoPassed", "Personagen")', function(data) {
+                            $('#tutorResultado').html(data);
+                        });
+                    }
+                    if(data=="naoMelhoria"){
+                        document.getElementById("ResultadoAv").innerHTML = "Passaste à avaliação com "+pontos+" pontos, mas não conseguiste melhorar a tua pontuação";
                         $('#tutorResultado').html(data);
-                    }); 
-                    
-                    //$('#tutorPassa').show();                    
+                    }
+                    if(data=="reprovado"){
+                        document.getElementById("ResultadoAv").innerHTML = "Reprovaste à avaliação com "+pontos+" pontos... Idiota!";
+                    }
+
+                    $('#endAvaliacao').show();
+                    $('#Tipo').hide();
                 }
-                if(data=="naoMelhoria")
-                    document.getElementById("ResultadoAv").innerHTML = "Passaste à avaliação com "+pontos+" pontos, mas não conseguiste melhorar a tua pontuação";
-                if(data=="reprovado")
-                    document.getElementById("ResultadoAv").innerHTML = "Reprovaste à avaliação com "+pontos+" pontos... Idiota!";
+            });
+        }
 
-                $('#endAvaliacao').show();
-                $('#Tipo').hide();
-                //#note apresenta opçoes de fim de avalicao
-            }
-        });
-    }
+        function validaQuestion() {
+            attempts++;
+            var userOpt = $('input[name=resposta]:checked').val();
+            var resUser = $("#Hipotese"+userOpt).text();
 
-    function validaQuestion() {
-        attempts++;
-        var userOpt = $('input[name=resposta]:checked').val();
-        var resUser = $("#Hipotese"+userOpt).text();
-
-        $.ajax({
-            url: '@Url.Action("validaQuestion", "Avaliacao")',
-            data: { idQuestion: idCurrentQuestion, resposta: resUser },
-            type: 'GET',
-            success: function (data) {
-                if(data=="true"){
-                    pontos +=  parseInt(10 / attempts);
-                    questionEnd();
-                    //#note verde com CSS!
-                }
-                else{
-                    if(attempts<3){
-                        $("#Resposta"+userOpt).attr( 'checked', false);
-                        $("#Resposta"+userOpt).attr( 'disabled', true);
-                        //#note vermelho com CSS!
+            $.ajax({
+                url: '@Url.Action("validaQuestion", "Avaliacao")',
+                data: { idQuestion: idCurrentQuestion, resposta: resUser },
+                type: 'GET',
+                success: function (data) {
+                    if(data=="true"){
+                        pontos +=  parseInt(10 / attempts);
+                        questionEnd();
+                        //#note verde com CSS!
                     }
                     else{
-                        questionEnd();
-                        //#note qq coisa com CSS!
+                        if(attempts<3){
+                            $("#Resposta"+userOpt).attr( 'checked', false);
+                            $("#Resposta"+userOpt).attr( 'disabled', true);
+                            //#note vermelho com CSS!
+                        }
+                        else{
+                            questionEnd();
+                            //#note qq coisa com CSS!
+                        }
                     }
-                }
 
-            }
-        });
-    }
+                }
+            });
+        }
 
 </script>
