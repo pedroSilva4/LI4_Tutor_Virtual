@@ -100,11 +100,14 @@
         }
 
         function startGame() {
+            $('#carrega')[0].src="";
             getNextQuestion();
             $('#divStartGame').hide();
             $('#Tipo').show();
             $('#Pontos').show();
             $("#tutor").hide();
+            
+            
         }
 
         function questionEnd(){
@@ -178,7 +181,10 @@
                         $('#tutorResultado').html(data);
                     }
                     if(data=="reprovado"){
-                        document.getElementById("ResultadoAv").innerHTML = "Reprovaste à avaliação com "+pontos+" pontos... Idiota!";
+                        document.getElementById("ResultadoAv").innerHTML = "Reprovaste à avaliação com "+pontos+" pontos... Tens que estar mais atento!";
+                        $.get( '@Url.Action("AvaliacaoReproved", "Personagen")', function(data) {
+                            $('#tutorResultado').html(data);
+                        });
                     }
 
                     $('#endAvaliacao').show();
