@@ -3,48 +3,61 @@
     ViewBag.Title = "Details";
 }
 
-<h1 style="text-align:center;color:#000033">Página Pessoal</h1>
+<style>
+    body{
+        background-repeat:no-repeat;
+        background:fixed;
+    }
+    </style>
+<h1 style="text-align:center;color:#000033">Página Pessoal do @Model.user.username</h1>
 
 <div id="user" style="text-align:center">
-    <p>@Model.user.username</p>
-    <p>@Model.user.pontos pontos</p>
+    <p></p>
+    <h2>@Model.user.pontos pontos</h2>
+    <br />
+    <br />
 </div>
+
 
 @if (Model.emConquista != null)
 {
     <div class="container" style="text-align:center">
-        <h3>Em Conquista</h3>
-        <img style="display:inline-block;margin:auto" src="../@Model.emConquista.sprite">
-        @if (Model.emConquistaAulas > 0) { 
-            <div id="emConquista" style="display:inline-block;margin:auto"></div>
+        <h2>Em Conquista</h2>
+        <img style="display:inline-block; " src="../@Model.emConquista.sprite">
+        @if (Model.emConquistaAulas > 0)
+        {
+            <div id="emConquista" style="display:inline-block;vertical-align:bottom;"></div>
         }
         </div>
+    
+    
 }
+
+<hr />
 
 @if (Model.conquistas != null)
 {
     <div class="container" style="text-align:center">
-        <h3>Conquistas</h3>
+        <h2>Conquistas</h2>
         @foreach (var item in Model.conquistas)
         {
             <img style="display:inline-block;margin:auto" src="../@item.sprite">
         }
     </div>
 }
-
-<style>
-#user {
-color: #00FFFF; 
-font-size: 16pt; 
+else
+{
+    <div style="text-align:center"><h2>Ainda não tens conquistas</h2></div>
 }
-    </style>
 
 
+
+<hr />
 
 @*NOTA: COLOCAR IF's AQUI PARA NÃO GERAR, QUADO NAO TEM VALORES!!*@
 
 
-<div class="container" style="text-align:center">
+<div id="estatisticas" class="container" style="text-align:center">
 <h2>Estatisticas de jogo</h2>
     <div id="aprovacoesTipo" style="display:inline-block;margin:auto"></div>
     <div id="sucessoImagem" style="display:inline-block;margin:auto"></div>
@@ -58,21 +71,28 @@ font-size: 16pt;
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
 
-        // Load the Visualization API and the piechart package.
-        google.load('visualization', '1.0', {'packages':['corechart']});
+    if(@Model.user.videoAprovado<=1 && @Model.user.audioAprovado<=1 && @Model.user.imagemAprovado<=1 &&
+        @Model.user.imagemVis<=1 && @Model.user.videoVis<=1 && @Model.user.audioVis<=1)
+        document.getElementById("estatisticas").style.display = 'none';
 
-        // Set a callback to run when the Google Visualization API is loaded.
-        google.setOnLoadCallback(aprovacoesTipo);
-        google.setOnLoadCallback(sucessoImagem);
-        google.setOnLoadCallback(sucessoVideo);
-        google.setOnLoadCallback(sucessoAudio);
-        google.setOnLoadCallback(emConquista);
+    // Load the Visualization API and the piechart package.
+    google.load('visualization', '1.0', {'packages':['corechart']});
 
-        // Callback that creates and populates a data table,
-        // instantiates the pie chart, passes in the data and
-        // draws it.
-        function aprovacoesTipo() {
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.setOnLoadCallback(aprovacoesTipo);
+    google.setOnLoadCallback(sucessoImagem);
+    google.setOnLoadCallback(sucessoVideo);
+    google.setOnLoadCallback(sucessoAudio);
+    google.setOnLoadCallback(emConquista);
 
+    // Callback that creates and populates a data table,
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function aprovacoesTipo() {
+        if(@Model.user.videoAprovado<=1 && @Model.user.audioAprovado<=1 && @Model.user.imagemAprovado<=1){
+            document.getElementById("aprovacoesTipo").style.display = 'none';
+        }
+        else{
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
@@ -93,9 +113,12 @@ font-size: 16pt;
             var chart = new google.visualization.PieChart(document.getElementById('aprovacoesTipo'));
             chart.draw(data, options);
         }
+    }
 
-        function sucessoImagem() {
-
+    function sucessoImagem() {
+        if(@Model.user.imagemAprovado<=1 && @Model.user.imagemVis<=1)
+            document.getElementById("sucessoImagem").style.display = 'none';
+        else{
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
@@ -115,9 +138,13 @@ font-size: 16pt;
             var chart = new google.visualization.PieChart(document.getElementById('sucessoImagem'));
             chart.draw(data, options);
         }
+    }
 
-        function sucessoVideo() {
+    function sucessoVideo() {
 
+        if(@Model.user.videoVis<=1 && @Model.user.videoAprovado<=1)
+            document.getElementById("sucessoVideo").style.display = 'none';
+        else{
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
@@ -137,9 +164,13 @@ font-size: 16pt;
             var chart = new google.visualization.PieChart(document.getElementById('sucessoVideo'));
             chart.draw(data, options);
         }
+    }
 
-        function sucessoAudio() {
+    function sucessoAudio() {
 
+        if(@Model.user.audioAprovado<=1 && @Model.user.audioAprovado<=1)
+            document.getElementById("sucessoAudio").style.display = 'none';
+        else{
             // Create the data table.
             var data = new google.visualization.DataTable();
             data.addColumn('string', 'Topping');
@@ -159,30 +190,32 @@ font-size: 16pt;
             var chart = new google.visualization.PieChart(document.getElementById('sucessoAudio'));
             chart.draw(data, options);
         }
+    }
 
-        function emConquista() {
+    function emConquista() {
 
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
-            data.addRows([
-              ['Aprovações', (@Model.emConquistasAprovado)],
-              ['Por Avaliar', (@Model.emConquistaAulas)]
-            ]);
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Aprovações', (@Model.emConquistasAprovado)],
+          ['Por Avaliar', (@Model.emConquistaAulas) - (@Model.emConquistasAprovado)]
+        ]);
 
-            // Set chart options
-            var options = {backgroundColor: 'transparent',
-                'title':'Aprovações a cada tipo de aula',
-                'width':400,
-                'height':300};
+        // Set chart options
+        var options = {backgroundColor: 'transparent',
+            'title':'Aprovações a cada tipo de aula',
+            'width':400,
+            'height':300
 
-            // Instantiate and draw our chart, passing in some options.
-            var chart = new google.visualization.PieChart(document.getElementById('emConquista'));
-            chart.draw(data, options);
-        }
+       };
 
-    </script>
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('emConquista'));
+        chart.draw(data, options);
+    }
 
+</script>
 
 
