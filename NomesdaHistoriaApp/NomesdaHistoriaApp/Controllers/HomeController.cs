@@ -112,7 +112,7 @@ namespace NomesdaHistoriaApp.Controllers
             }
             else
             {
-                ModelState.AddModelError("username", "Username já está a ser usado");
+                ModelState.AddModelError("Erro", "Dados errados");
             }
 
             return View(user);
@@ -259,6 +259,34 @@ namespace NomesdaHistoriaApp.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Config(NomesdaHistoriaApp.Models.Utilizadores user) {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var db = new UtilizadoresDBcontext())
+                    {
+                        db.Entry(user).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                       
+                        
+                        
+                        Session["userAmb"] = "../" + new AmbientedeAulaDBContext().AmbientesDeAula.Find(user.tema_Ambiente).PATH;
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
+                catch (Exception e)
+                {
+                    System.Console.Write(e.StackTrace);
+                    ModelState.AddModelError("username", "Username já está a ser usado");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("Erro", "Dados errados");
+            }
+
             return View(user);
         }
         public ActionResult Logout()
