@@ -243,6 +243,24 @@ namespace NomesdaHistoriaApp.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Config() {
+
+
+            String username = (String)Session["userId"];
+
+            UtilizadoresDBcontext db = new UtilizadoresDBcontext();
+            Utilizadores s = db.Utilizadores.Find(username);
+
+
+            return View(s);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Config(NomesdaHistoriaApp.Models.Utilizadores user) {
+            return View(user);
+        }
         public ActionResult Logout()
         {
             FormsAuthentication.SignOut();

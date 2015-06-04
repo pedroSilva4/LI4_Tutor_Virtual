@@ -172,6 +172,7 @@
     <Content Include="Views\Personagen\AvaliacaoPassed.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
     <Content Include="Views\Home\_ConsultarRanking.cshtml" />
+    <Content Include="Views\Home\Config.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
