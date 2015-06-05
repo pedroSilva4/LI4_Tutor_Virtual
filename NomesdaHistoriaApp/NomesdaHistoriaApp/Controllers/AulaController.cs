@@ -83,5 +83,11 @@ namespace NomesdaHistoriaApp.Controllers
            
         }
 
+        public String getAudioText(String Path) {
+            String text = parseFile(Path);
+
+            return "<p>" + text + "</p>";
+        }
+
     }
 }
