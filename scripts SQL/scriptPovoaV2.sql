@@ -88,7 +88,7 @@ insert into Perguntas values(12,2,'Para onde se dirigiu D. Afonso Henriques com 
 insert into Perguntas values(13,2,'Em que ano se deu a Batalha de S. Mamede?','1128','2009','1000','1500');
 insert into Perguntas values(14,2,'Qual a intenção de D. Afonso Henriques quando marchou para Guimarães?','Conquistar as suas legitimas terras ','Discutir com a sua mãe','render-se à sua mãe','Defrontar os mouros');
 insert into Perguntas values(15,2,'Quem defronta D. Afonso Henriques na Batalha de S. Mamede?','A sua mãe','O seu irmão','O seu pai','Os espanhóis');
-insert into Perguntas values(16,2,'ApÃ³s a Batalha de S. Mamede, D. Afonso Henriques ficou a governar...','O condado Portucalense','Espanha','O vitória de Guimarães','Portugal');
+insert into Perguntas values(16,2,'Após a Batalha de S. Mamede, D. Afonso Henriques ficou a governar...','O condado Portucalense','Espanha','O vitória de Guimarães','Portugal');
 insert into Perguntas values(17,2,'Quem apoiou D. Teresa na Batalha de S. Mamede?','O exército galego','a polícia','O exército de Espanha','Ninguem apoiou Dona Teresa');
 insert into Perguntas values(18,2,'Que batalha D. Afonso Henriques travou com a sua mãe?','Batalha de São Mamede','Batalha das Almofadas','Batalha difícil','Batalha do espaço');
 insert into Perguntas values(19,2,'Quem venceu a Batalha de S. Mamede?','Dom Afonso Henriques','O rei de Portugal','ninguem venceu, fizeram as pazes','Os mouros');
