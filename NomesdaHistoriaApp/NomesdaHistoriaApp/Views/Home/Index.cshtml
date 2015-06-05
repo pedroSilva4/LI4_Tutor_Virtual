@@ -6,21 +6,7 @@
 
 @if (Session["userID"] != null)
 {
-    <div id="boxes" class="text-center">
-        <!-- #customize your modal window here -->
-        <div id="dialog" class="window text-center">
-            <!-- close button is defined as close class -->
-            <div class="container text-center" >
-                <a href="#" class="close">X</a>
-                <video controls autoplay>
-                    <source src="~/Assets/help/videoRegistar.webm" type="video/webm" />
-                </video>
-            </div>
-        </div>
-
-        <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->
-        <div id="mask"></div>
-    </div>
+   
     
     <div class="containerCards sidebar" style="background-color:transparent">
         <div class="card " style="background-color:transparent">
@@ -39,6 +25,27 @@
                 </div>
             </div>
         </div>
+
+    <!--video de ajuda tutorial-->
+
+    <div id="boxes" class="text-center">
+        <!-- #customize your modal window here -->
+        <div id="dialog" class="window text-center">
+            <!-- close button is defined as close class -->
+            <div class="container text-center">
+                <a href="#" class="close">X</a>
+                <video id="videoTutorial" controls>
+                    <source src="~/Assets/help/explicaFuncVideo.webm" type="video/webm" />
+                </video>
+            </div>
+        </div>
+
+        <!-- Do not remove div#mask, because you'll need it to fill the whole screen -->
+        <div id="mask"></div>
+    </div>
+
+
+
 }
 else
 {
@@ -60,9 +67,9 @@ else
                         </div>
                         <div class="welcome-video">
                             <video width="640" height="480" controls>
+                                <source src="~/Assets/help/videoRegistar.webm" type="video/webm">
                                 <source src="~/Assets/help/videoRegistar.mp4" type="video/mp4">
                                 <source src="~/Assets/help/videoRegistar.ogv" type="video/ogg">
-                                <source src="~/Assets/help/videoRegistar.webm" type="video/webm">
                                 O teu browser não suporta ficheiros de video
                             </video>
                         </div>
@@ -137,7 +144,7 @@ else
 
             //transition effect
             $(id).fadeIn(2000);
-
+            $("#videoTutorial").get(0).play();
         });
 
         //if close button is clicked
@@ -145,12 +152,15 @@ else
             //Cancel the link behavior
             e.preventDefault();
             $('#mask, .window').hide();
+            $("#videoTutorial").get(0).pause();
         });
 
         //if mask is clicked
         $('#mask').click(function () {
+            $("#videoTutorial").get(0).pause();
             $(this).hide();
             $('.window').hide();
+           
         });
 
     });
