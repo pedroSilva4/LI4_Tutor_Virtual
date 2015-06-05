@@ -4,13 +4,8 @@
     Layout = "~/Views/Shared/_LayoutWithBar.cshtml";
 }
 
-<style>
-    body {
-        background-repeat: no-repeat;
-        background: fixed;
-    }
-</style>
-<h1 style="text-align:center;color:#280000 ;font-family:'Comic Sans MS'">Página Pessoal do @Model.user.username</h1>
+
+<h1 style="text-align:center;color:#280000 ;font-family:Georgia, 'Times New Roman', Times, serif">Página Pessoal do @Model.user.username</h1>
 
 <div id="botaoConfig" style="text-align:center" >
     @Html.ActionLink("alterar configuração ", "../Home/Config", new { }, new { @class = "btn btn-default text-primary" })<br />
@@ -22,14 +17,6 @@
     <br />
     <br />
 </div>
-
-<style>
-    .btn {
-        background-color:transparent;
-        font-size:large;
-        color:black;
-    }
-    </style>
 
 
 @if (Model.emConquista != null)
@@ -232,3 +219,16 @@ else
 </script>
 
 
+
+<style>
+    .btn {
+        background-color: transparent;
+        font-size: large;
+        color: black;
+    }
+
+     body {
+        background-repeat: no-repeat;
+        background: fixed;
+    }
+</style>

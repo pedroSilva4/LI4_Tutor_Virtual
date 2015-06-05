@@ -79,7 +79,7 @@ namespace NomesdaHistoriaApp.Controllers
 
             String res;
 
-            if (pontos < 40)
+            if (pontos < 36)
             {
                 res = "reprovado";
             }

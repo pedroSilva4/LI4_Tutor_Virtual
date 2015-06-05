@@ -16,20 +16,22 @@
 
 <div style="text-align:center;" id="divStartGame">
     <p></p>
-    <button type="button" style="height:90px; width:200px; text-align:center" class="btn-info" onclick="startGame()"> Iniciar a Avaliação </button>
+    <button style="height:90px; width:200px; text-align:center;background-color: dimgrey;color: #ffffff;" class="btn-default" onclick="startGame()"> Não tenhos dúvidas, começar! </button>
 </div>
+
+
 
 @*modal fade, muito fixe para apresentar as questoes... ou outras cenas*@
 @*<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" >*@
 
-<div class="modal-dialog" id="Tipo" style="width:55%;text-align:center" hidden="hidden">
+<div class="modal-dialog" id="Tipo" style="width:55%;text-align:center;" hidden="hidden">
     <div class="modal-content" id="PerguntaID">
 
         <h3 id="Pontos" style="text-align:left">Pontos: 0</h3>
 
         <h2 class="modal-title" id="Pergunta">There is the Question!</h2> 
 
-        <div class="modal-body">
+        <div class="modal-body" style="">
             @Html.RadioButton("resposta", "1", new { id = "Resposta1", style = "margin-right: 10px;", }) <span id="Hipotese1">Opcao 1</span><br />
             @Html.RadioButton("resposta", "2", new { id = "Resposta2", style = "margin-right: 10px;", }) <span id="Hipotese2">Opcao 2</span><br />
             @Html.RadioButton("resposta", "3", new { id = "Resposta3", style = "margin-right: 10px;", }) <span id="Hipotese3">Opcao 3</span><br />
@@ -53,7 +55,7 @@
         <div style="display:inline-block" ;"text-align:center">
             @Html.ActionLink("Repetir Avaliação", "avaliar", "Avaliacao", new { username = Session["userID"], codAula = Model.codAula, codApr = Model.codApr, tipo = Model.tipo }, new { @class = "btn btn-default text-primary", @id = "Repetir Avaliacao", })<br />
             @Html.ActionLink("Repetir a Aula ", "../Aula/Index", new { titulo = Session["tituloAula"] }, new { @class = "btn btn-default text-primary" })<br />
-            @Html.ActionLink("Voltar à Etapa", "Index", "Home", new { }, new { @class = "btn btn-default text-primary", @id = "Voltar à Etapa" })<br />
+            @Html.ActionLink("Voltar ao Início", "Index", "Home", new { }, new { @class = "btn btn-default text-primary", @id = "Voltar à Etapa" })<br />
         </div>
     </div>
 </div>
@@ -131,6 +133,17 @@
             attempts=0;
             unlockAll();
 
+            //unckek das opçoes
+            $("#Resposta1").prop('checked', false);
+            $("#Resposta2").prop('checked', false);
+            $("#Resposta3").prop('checked', false);
+            $("#Resposta4").prop('checked', false);
+
+            $("#Hipotese1").css('background-color','');
+            $("#Hipotese2").css('background-color','');
+            $("#Hipotese3").css('background-color','');
+            $("#Hipotese4").css('background-color','');
+
             $.ajax({
                 url: '@Url.Action("getQuestion", "Avaliacao")',
                 data: { "idQuestion": idCurrentQuestion },
@@ -204,17 +217,16 @@
                     if(data=="true"){
                         pontos +=  parseInt(10 / attempts);
                         questionEnd();
-                        //#note verde com CSS!
+                        $("#Hipotese"+userOpt).css('background-color','#66FF33');
                     }
                     else{
+                        $("#Hipotese"+userOpt).css('background-color','#FF0000');
                         if(attempts<3){
                             $("#Resposta"+userOpt).attr( 'checked', false);
                             $("#Resposta"+userOpt).attr( 'disabled', true);
-                            //#note vermelho com CSS!
                         }
                         else{
-                            questionEnd();
-                            //#note qq coisa com CSS!
+                            questionEnd();                         
                         }
                     }
 
@@ -223,3 +235,13 @@
         }
 
 </script>
+
+
+<style>
+    .btn {
+        background-color: dimgrey;
+        color: #ffffff;
+        vertical-align: auto;
+        margin: 2%;
+    }
+</style>
