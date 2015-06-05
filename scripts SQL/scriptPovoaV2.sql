@@ -73,7 +73,7 @@ insert into Multimedia values(13,5,2,2,'Assets/etapas/dafh/2 - Batalha de S. Mam
 --insert into Multimedia values(14,5,2,3,'Assets/etapas/dafh/2 - Batalha de S. Mamede/Imagem/Ap2/img3.txt','Assets/etapas/dafh/2 - Batalha de S. Mamede/Imagem/Ap2/Img3.png');
 -- apresentação 6
 insert into Apresentacoes values(6,2,'video',1,1);
-insert into Multimedia values(15,6,2,1,NULL,'Assets/etapas/2 - Batalha de S. Mamede/Video/Ap1/Afonso2.webm');
+insert into Multimedia values(15,6,2,1,NULL,'Assets/etapas/dafh/2 - Batalha de S. Mamede/Video/Ap1/Afonso2.webm');
 -- ajudas aula 2
 insert into Ajudas values(10,2,'O seu exército','Quem Dom Afonso reuniú para voltar ao condado portucalense?','Assets/etapas/dafh/2 - Batalha de S. Mamede/Ajudas/1-portucalense.wav');
 insert into Ajudas values(11,2,'No ano 1128','Em que ano ocorreu a batalha de São Maméde?','Assets/etapas/dafh/2 - Batalha de S. Mamede/Ajudas/3-1128.wav');
@@ -113,7 +113,7 @@ insert into Multimedia values(23,8,3,3,'Assets/etapas/dafh/3 - Batalha de Ouriqu
 insert into Multimedia values(24,8,3,4,'Assets/etapas/dafh/3 - Batalha de Ourique/Imagem/Ap2/img4.txt','Assets/etapas/dafh/3 - Batalha de Ourique/Imagem/Ap2/img4.png');
 -- apresentação 9
 insert into Apresentacoes values(9,3,'video',1,1);
-insert into Multimedia values(25,9,3,1,NULL,'Assets/etapas/3 - Batalha de Ourique/Video/Ap1/Afonso3.webm');
+insert into Multimedia values(25,9,3,1,NULL,'Assets/etapas/dafh/3 - Batalha de Ourique/Video/Ap1/Afonso3.webm');
 -- ajudas aula 3
 insert into Ajudas values(17,3,'1139','Em que ano aconteceu a batalha de Ourique?','Assets/etapas/dafh/3 - Batalha de Ourique/Ajudas/1-ourique.wav');
 insert into Ajudas values(18,3,'Cinco reis mouros','Quem Dom Afonso defrontou na batalha de Ourique?','Assets/etapas/dafh/3 - Batalha de Ourique/Ajudas/2-mouros.wav');
@@ -150,7 +150,7 @@ insert into Multimedia values(33,11,4,3,'Assets/etapas/dafh/4 - Últimas Conquis
 insert into Multimedia values(34,11,4,4,'Assets/etapas/dafh/4 - Últimas Conquistas/Imagem/Ap2/img4.txt','Assets/etapas/dafh/4 - Últimas Conquistas/Imagem/Ap2/img4.png');
 -- apresentação 12
 insert into Apresentacoes values(12,4,'video',1,1);
-insert into Multimedia values(35,12,4,1,NULL,'Assets/etapas/4 - Últimas Conquistas/Video/Ap1/Afonso4.webm');
+insert into Multimedia values(35,12,4,1,NULL,'Assets/etapas/dafh/4 - Últimas Conquistas/Video/Ap1/Afonso4.webm');
 
 -- ajudas aula 4
 insert into Ajudas values(21,4,'No ano de 1147','Quando parte Dom Afonso para Lisboa?','Assets/etapas/dafh/4 - Últimas Conquistas/Ajudas/1-lisboa.wav');
@@ -188,7 +188,7 @@ insert into Multimedia values(43,14,5,4,'Assets/etapas/dafh/5 - Reino de Portuga
 
 -- apresentação 15
 insert into Apresentacoes values(15,5,'video',1,1);
-insert into Multimedia values(44,15,5,1,NULL,'Assets/etapas/5 - Reino de Portugal/Video/Ap1/Afonso5.webm');
+insert into Multimedia values(44,15,5,1,NULL,'Assets/etapas/dafh/5 - Reino de Portugal/Video/Ap1/Afonso5.webm');
 
 -- ajudas aula 5
 insert into Ajudas values(26,5,'No ano de 1179.','Quando Dom Afonso Henriques é oficialmente reconhecido rei?','Assets/etapas/dafh/5 - Reino de Portugal/Ajudas/1-reconhecido.wav');
