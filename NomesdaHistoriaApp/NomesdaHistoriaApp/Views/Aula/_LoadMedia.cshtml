@@ -32,7 +32,7 @@
 
         <div class="container col-sm-4">
             <img class="talkingtutor" src="~/@Html.Action("LoadUserAvatarImg", new{ })">
-            <audio class="container" controls>
+            <audio id="audioAula"class="container" controls>
                 <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="audio/wav">
             </audio>
         </div>
