@@ -30,18 +30,16 @@
     @if (Model.tipo == "audio")
     {
 
-
-
-        
-        <div class="container col-xs-2">
-            <audio controls>
+        <div class="container col-sm-4">
+            <img class="talkingtutor" src="~/@Html.Action("LoadUserAvatarImg", new{ })">
+            <audio class="container" controls>
                 <source src="@Url.Action("PlayVideo",new {url = "~/"+Model.Multimedia.ElementAt(0).PATH})" type="audio/wav">
             </audio>
         </div>
-        <div class="conatainer col-xs-4">
-           
-                @Html.Action("getAudioText", new { Path =Model.Multimedia.ElementAt(0).texto })
-            
+        <div class="container col-sm-4 audiotext text-center">
+            <div class="container mmargin">
+                @Html.Action("getAudioText", new { Path =Model.Multimedia.ElementAt(0).texto })        
+            </div>
         </div>
     }
 
@@ -224,5 +222,21 @@
         font-size: 18px;
         color: #fff;
         background-color: #000;
+    }
+
+    .audiotext {
+        background-color : white;
+        border-radius : 20%;
+        border : 2px solid black;
+       
+    }
+
+    .mmargin {
+        margin : 10% 10% 10% 10%;
+    }
+
+    .talkingtutor {
+        width :80%;
+        height : 80%;
     }
 </style>

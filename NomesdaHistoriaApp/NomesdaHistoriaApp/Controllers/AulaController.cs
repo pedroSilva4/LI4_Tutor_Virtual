@@ -89,5 +89,14 @@ namespace NomesdaHistoriaApp.Controllers
             return "<p>" + text + "</p>";
         }
 
+
+        public String LoadUserAvatarImg() {
+            UtilizadoresDBcontext usersDB = new UtilizadoresDBcontext();
+            String avatar = usersDB.Utilizadores.Find(Session["userID"]).avatar;
+            PerosnagensDBContext personagensDB = new PerosnagensDBContext();
+            Personagen p = personagensDB.Personagens.Find(avatar);
+
+            return p.sprite+"Talking.gif";
+        }
     }
 }
