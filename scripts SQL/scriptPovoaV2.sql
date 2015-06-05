@@ -88,7 +88,7 @@ insert into Perguntas values(12,2,'Para onde se dirigiu D. Afonso Henriques com 
 insert into Perguntas values(13,2,'Em que ano se deu a Batalha de S. Mamede?','1128','2009','1000','1500');
 insert into Perguntas values(14,2,'Qual a intenção de D. Afonso Henriques quando marchou para Guimarães?','Conquistar as suas legitimas terras ','Discutir com a sua mãe','render-se à sua mãe','Defrontar os mouros');
 insert into Perguntas values(15,2,'Quem defronta D. Afonso Henriques na Batalha de S. Mamede?','A sua mãe','O seu irmão','O seu pai','Os espanhóis');
-insert into Perguntas values(16,2,'ApÃ³s a Batalha de S. Mamede, D. Afonso Henriques ficou a governar...','O condado Portucalense','Espanha','O vitória de Guimarães','Portugal');
+insert into Perguntas values(16,2,'Após a Batalha de S. Mamede, D. Afonso Henriques ficou a governar...','O condado Portucalense','Espanha','O vitória de Guimarães','Portugal');
 insert into Perguntas values(17,2,'Quem apoiou D. Teresa na Batalha de S. Mamede?','O exército galego','a polícia','O exército de Espanha','Ninguem apoiou Dona Teresa');
 insert into Perguntas values(18,2,'Que batalha D. Afonso Henriques travou com a sua mãe?','Batalha de São Mamede','Batalha das Almofadas','Batalha difícil','Batalha do espaço');
 insert into Perguntas values(19,2,'Quem venceu a Batalha de S. Mamede?','Dom Afonso Henriques','O rei de Portugal','ninguem venceu, fizeram as pazes','Os mouros');
@@ -210,15 +210,15 @@ insert into Perguntas values(51,5,'Em que ano morreu D. Afonso Henriques?','1185
 
 -- conteúdos audio
 insert into Apresentacoes values(16,1,'audio',1,1);
-insert into Multimedia values(45,16,1,1,'Assets/etapas/1 - Afonso Henriques/Audio/Ap1/mix1.txt','Assets/etapas/1 - Afonso Henriques/Audio/Ap1/mix1.wav');
+insert into Multimedia values(45,16,1,1,'Assets/etapas/dafh/1 - Afonso Henriques/Audio/Ap1/mix1.txt','Assets/etapas/1 - Afonso Henriques/Audio/Ap1/mix1.wav');
 insert into Apresentacoes values(17,2,'audio',1,1);
-insert into Multimedia values(46,17,2,1,'Assets/etapas/2 - Batalha de S. Mamede/Audio/Ap1/mix2.txt','Assets/etapas/2 - Batalha de S. Mamede/Audio/Ap1/mix2.wav');
+insert into Multimedia values(46,17,2,1,'Assets/etapas/dafh/2 - Batalha de S. Mamede/Audio/Ap1/mix2.txt','Assets/etapas/2 - Batalha de S. Mamede/Audio/Ap1/mix2.wav');
 insert into Apresentacoes values(18,3,'audio',1,1);
-insert into Multimedia values(47,18,3,1,'Assets/etapas/3 - Batalha de Ourique/Audio/Ap1/mix3.txt','Assets/etapas/3 - Batalha de Ourique/Audio/Ap1/mix3.wav');
+insert into Multimedia values(47,18,3,1,'Assets/etapas/dafh/3 - Batalha de Ourique/Audio/Ap1/mix3.txt','Assets/etapas/3 - Batalha de Ourique/Audio/Ap1/mix3.wav');
 insert into Apresentacoes values(19,4,'audio',1,1);
-insert into Multimedia values(48,19,4,1,'Assets/etapas/4 - Últimas Conquistas/Audio/Ap1/mix4.txt','Assets/etapas/4 - Últimas Conquistas/Audio/Ap1/mix4.wav');
+insert into Multimedia values(48,19,4,1,'Assets/etapas/dafh/4 - Últimas Conquistas/Audio/Ap1/mix4.txt','Assets/etapas/4 - Últimas Conquistas/Audio/Ap1/mix4.wav');
 insert into Apresentacoes values(20,5,'audio',1,1);
-insert into Multimedia values(49,20,5,1,'Assets/etapas/5 - Reino de Portugal/Audio/Ap1/mix5.txt','Assets/etapas/5 - Reino de Portugal/Audio/Ap1/mix5.wav');
+insert into Multimedia values(49,20,5,1,'Assets/etapas/dafh/5 - Reino de Portugal/Audio/Ap1/mix5.txt','Assets/etapas/5 - Reino de Portugal/Audio/Ap1/mix5.wav');
 /*
 select * from aulas;
 insert into Avaliacoes values('pedrinho',1,10,'video');
