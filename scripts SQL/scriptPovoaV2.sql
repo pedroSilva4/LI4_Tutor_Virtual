@@ -210,15 +210,15 @@ insert into Perguntas values(51,5,'Em que ano morreu D. Afonso Henriques?','1185
 
 -- conteúdos audio
 insert into Apresentacoes values(16,1,'audio',1,1);
-insert into Multimedia values(45,16,1,1,'Assets/etapas/1 - Afonso Henriques/Audio/Ap1/mix1.txt','Assets/etapas/1 - Afonso Henriques/Audio/Ap1/mix1.wav');
+insert into Multimedia values(45,16,1,1,'Assets/etapas/dafh/1 - Afonso Henriques/Audio/Ap1/mix1.txt','Assets/etapas/1 - Afonso Henriques/Audio/Ap1/mix1.wav');
 insert into Apresentacoes values(17,2,'audio',1,1);
-insert into Multimedia values(46,17,2,1,'Assets/etapas/2 - Batalha de S. Mamede/Audio/Ap1/mix2.txt','Assets/etapas/2 - Batalha de S. Mamede/Audio/Ap1/mix2.wav');
+insert into Multimedia values(46,17,2,1,'Assets/etapas/dafh/2 - Batalha de S. Mamede/Audio/Ap1/mix2.txt','Assets/etapas/2 - Batalha de S. Mamede/Audio/Ap1/mix2.wav');
 insert into Apresentacoes values(18,3,'audio',1,1);
-insert into Multimedia values(47,18,3,1,'Assets/etapas/3 - Batalha de Ourique/Audio/Ap1/mix3.txt','Assets/etapas/3 - Batalha de Ourique/Audio/Ap1/mix3.wav');
+insert into Multimedia values(47,18,3,1,'Assets/etapas/dafh/3 - Batalha de Ourique/Audio/Ap1/mix3.txt','Assets/etapas/3 - Batalha de Ourique/Audio/Ap1/mix3.wav');
 insert into Apresentacoes values(19,4,'audio',1,1);
-insert into Multimedia values(48,19,4,1,'Assets/etapas/4 - Últimas Conquistas/Audio/Ap1/mix4.txt','Assets/etapas/4 - Últimas Conquistas/Audio/Ap1/mix4.wav');
+insert into Multimedia values(48,19,4,1,'Assets/etapas/dafh/4 - Últimas Conquistas/Audio/Ap1/mix4.txt','Assets/etapas/4 - Últimas Conquistas/Audio/Ap1/mix4.wav');
 insert into Apresentacoes values(20,5,'audio',1,1);
-insert into Multimedia values(49,20,5,1,'Assets/etapas/5 - Reino de Portugal/Audio/Ap1/mix5.txt','Assets/etapas/5 - Reino de Portugal/Audio/Ap1/mix5.wav');
+insert into Multimedia values(49,20,5,1,'Assets/etapas/dafh/5 - Reino de Portugal/Audio/Ap1/mix5.txt','Assets/etapas/5 - Reino de Portugal/Audio/Ap1/mix5.wav');
 /*
 select * from aulas;
 insert into Avaliacoes values('pedrinho',1,10,'video');
