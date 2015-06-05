@@ -5,13 +5,23 @@
 @foreach (var item in Model.Keys)
 {
     <li>
-        <h4>Etapa  : @item</h4>
+        <h3 style="font-style:inherit;font-weight:bold">Etapa  : @item</h3>
         <ul class="ListAulas">
             @foreach (var aula in Model[item])
             {
-                <li><div>@Html.ActionLink("Aula " + aula, "../Aula/Index", new { titulo = aula }, new { @class = "classLink card classCard" })</div></li>
+                <li><div>@Html.ActionLink(aula, "../Aula/Index", new { titulo = aula }, new { @class = "btn " })</div></li>
             }
         </ul>
     </li>
 }
 </ul>    
+
+
+<style>
+    .btn {
+        background-color:dimgrey;
+        color:#ffffff;
+        vertical-align:auto;
+        margin:2%;
+    }
+</style>

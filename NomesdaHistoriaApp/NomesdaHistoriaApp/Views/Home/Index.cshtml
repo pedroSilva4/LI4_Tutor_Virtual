@@ -6,12 +6,12 @@
 
 @if (Session["userID"] != null)
 {
- 
-        <div class="containerCards sidebar">
-            <div class="card ">
-                @Html.Action("_ListEtapas", "Home", "Home/_ListEtapas")
-            </div>
+
+    <div class="containerCards sidebar" style="background-color:transparent">
+        <div class="card " style="background-color:transparent">
+            @Html.Action("_ListEtapas", "Home", "Home/_ListEtapas")
         </div>
+    </div>
 
         <div class="body-contentT">
 
@@ -31,7 +31,7 @@ else
             <div class="content">
                 <div class="container text-center">
 
-                    <h1 class="text-primary text-center">Olá, Bem Vindo aos Nome da História</h1>
+                    <h1 class="text-primary text-center" style="text-align:center;color:#280000 ;font-family:'Comic Sans MS'">Olá, Bem Vindo aos Nome da História</h1>
 
                     <p>introduçao a cenas ficava fixed!</p>
 

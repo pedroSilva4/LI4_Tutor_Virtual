@@ -1,15 +1,20 @@
 ﻿@model NomesdaHistoriaApp.Models.PagPessoalViewModel
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutWithBar.cshtml";
 }
 
 <style>
-    body{
-        background-repeat:no-repeat;
-        background:fixed;
+    body {
+        background-repeat: no-repeat;
+        background: fixed;
     }
-    </style>
-<h1 style="text-align:center;color:#000033">Página Pessoal do @Model.user.username</h1>
+</style>
+<h1 style="text-align:center;color:#280000 ;font-family:'Comic Sans MS'">Página Pessoal do @Model.user.username</h1>
+
+<div id="botaoConfig" style="text-align:center" >
+    @Html.ActionLink("alterar configuração ", "../Home/Config", new { }, new { @class = "btn btn-default text-primary" })<br />
+</div>
 
 <div id="user" style="text-align:center">
     <p></p>
@@ -18,19 +23,27 @@
     <br />
 </div>
 
+<style>
+    .btn {
+        background-color:transparent;
+        font-size:large;
+        color:black;
+    }
+    </style>
+
 
 @if (Model.emConquista != null)
 {
     <div class="container" style="text-align:center">
-        <h2>Em Conquista</h2>
+        <h2>Em conquista</h2>
         <img style="display:inline-block; " src="../@Model.emConquista.sprite">
         @if (Model.emConquistaAulas > 0)
         {
             <div id="emConquista" style="display:inline-block;vertical-align:bottom;"></div>
         }
-        </div>
-    
-    
+    </div>
+
+
 }
 
 <hr />
@@ -58,7 +71,7 @@ else
 
 
 <div id="estatisticas" class="container" style="text-align:center">
-<h2>Estatisticas de jogo</h2>
+    <h2>Estatisticas de jogo</h2>
     <div id="aprovacoesTipo" style="display:inline-block;margin:auto"></div>
     <div id="sucessoImagem" style="display:inline-block;margin:auto"></div>
     <div id="sucessoVideo" style="display:inline-block;margin:auto"></div>
@@ -68,8 +81,8 @@ else
 
 
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
 
     if(@Model.user.videoAprovado<=1 && @Model.user.audioAprovado<=1 && @Model.user.imagemAprovado<=1 &&
         @Model.user.imagemVis<=1 && @Model.user.videoVis<=1 && @Model.user.audioVis<=1)
@@ -209,7 +222,7 @@ else
             'width':480,
             'height':360
 
-       };
+        };
 
         // Instantiate and draw our chart, passing in some options.
         var chart = new google.visualization.PieChart(document.getElementById('emConquista'));
