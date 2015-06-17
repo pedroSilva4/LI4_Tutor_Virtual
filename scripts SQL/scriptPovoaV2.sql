@@ -39,7 +39,7 @@ insert into Multimedia values(8,3,1,3,'Assets/etapas/dafh/1 - Afonso Henriques/I
 
 -- ajudas aula 1
 insert into Ajudas values(1,1,'Foi o fundador do nosso País','Quem foi D.Afonso Henriques','Assets/etapas/dafh/1 - Afonso Henriques/Ajudas/quemFoiDAFH.wav');
-insert into Ajudas values(2,1,'No ano de 1283','Em que ano nasceu D.Afonso Henriques','Assets/etapas/dafh/1 - Afonso Henriques/Ajudas/emQueAnoNasceuDAFH.wav');
+insert into Ajudas values(2,1,'No ano de 1103','Em que ano nasceu D.Afonso Henriques','Assets/etapas/dafh/1 - Afonso Henriques/Ajudas/emQueAnoNasceuDAFH.wav');
 insert into Ajudas values(3,1,'Conde Dom Henrique','Quem foi o pai de D. Afonso Henriques?','Assets/etapas/dafh/1 - Afonso Henriques/Ajudas/paiDAFH.wav');
 insert into Ajudas values(4,1,'Dona Teresa','Quem foi a mãe de D. Afonso Henriques?','Assets/etapas/dafh/1 - Afonso Henriques/Ajudas/maeDAFH.wav');
 insert into Ajudas values(5,1,'D. Afonso XI','O nome de Afonso de D. Afonso Henriques foi dado em honra de quem?','Assets/etapas/dafh/1 - Afonso Henriques/Ajudas/emHonraDe.wav');
